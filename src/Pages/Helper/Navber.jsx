@@ -140,7 +140,7 @@ const TickerRibbon = () => {
         ))}
       </div>
       <div className="flex items-center justify-between mx-auto text-xs font-medium gap-4">
-        <div className="flex space-x-4 px-7 py-1.5">
+        <div className="flex space-x-4 px-7 py-1.5 text-foreground">
           <div>
             <div className="font-bold">447,351,821</div>
             <div>Volume</div>

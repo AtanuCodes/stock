@@ -28,7 +28,7 @@ const LoginInterface = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center p-4">
+    <div className="h-screen bg-gradient-to-br from-gray-50 via-rose-50 to-gray-00 flex items-center justify-center px-4">
       {/* Subtle Background Pattern */}
       <div className=""></div>
       
@@ -136,14 +136,13 @@ const LoginInterface = () => {
         </div>
 
         {/* Market Stats Decoration */}
-        <div className="absolute -top-4 -right-4 bg-gradient-to-bl from-red-300 to-red-500 backdrop-blur-sm rounded-full p-3 border border-red-200">
+        {/* <div className="absolute -top-4 -right-4 bg-gradient-to-bl from-red-300 to-red-500 backdrop-blur-sm rounded-full p-3 border border-red-200">
           <BarChart3 className="w-6 h-6   text-white" />
-        </div>
+        </div> */}
 
         {/* Footer */}
-        <div className="text-center mt-8 text-xs text-gray-500">
+        <div className="text-center mt-4 text-xs text-gray-500">
           <p>© 2025 I-Trade. All rights reserved.</p>
-          <p className="mt-1">Professional trading platform for investors.</p>
         </div>
       </div>
     </div>

@@ -1,21 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, Search, TrendingUp, TrendingDown, BarChart3, Eye, List, FileText, Briefcase, ArrowUpDown } from 'lucide-react';
-import { LineChart, Line, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-// Sample chart data
+// Enhanced chart data with peaks and lows
 const chartData = [
-  { value: 5500 }, { value: 5520 }, { value: 5510 }, { value: 5540 },
-  { value: 5560 }, { value: 5580 }, { value: 5590 }, { value: 5610 },
-  { value: 5620 }, { value: 5640 }, { value: 5636.15 }
+  { time: '9:30', value: 5500 },
+  { time: '10:00', value: 5520 },
+  { time: '10:30', value: 5490 }, // Low
+  { time: '11:00', value: 5540 },
+  { time: '11:30', value: 5680 }, // Peak
+  { time: '12:00', value: 5650 },
+  { time: '12:30', value: 5590 },
+  { time: '1:00', value: 5610 },
+  { time: '1:30', value: 5580 },
+  { time: '2:00', value: 5640 },
+  { time: '2:30', value: 5620 },
+  { time: '3:00', value: 5636.15 }
+];
+
+// News data for ticker
+const newsData = [
+  "BEXIMCO: Board declared 10% cash dividend",
+  "GRAMEENPHONE: Q3 revenue up 8.5% YoY",
+  "BRAC BANK: Announces rights issue 1:4 ratio",
+  "SQUARE PHARMA: FDA approval for new drug",
+  "WALTON: Export earnings increased 15%",
+  "OLYMPIC IND: New factory inaugurated",
+  "ROBI AXIATA: 5G network expansion announced",
+  "LANKABANGLA: Profit surges 22% in Q3",
+  "CITY BANK: Digital banking services launched",
+  "ACI LIMITED: Strategic partnership with MNC"
 ];
 
 const MobileTradingDashboard = ({ onMenuClick }) => {
   const [activeTab, setActiveTab] = useState('Market');
+  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
+  const [newsVisible, setNewsVisible] = useState(true);
+
+  // News ticker animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNewsVisible(false);
+      
+      setTimeout(() => {
+        setCurrentNewsIndex((prevIndex) => 
+          prevIndex === newsData.length - 1 ? 0 : prevIndex + 1
+        );
+        setNewsVisible(true);
+      }, 200); // Brief pause for transition
+      
+    }, 3000); // Change news every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-teal-600 text-white px-4 py-3">
+      <div className="bg-gray-50 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <button 
@@ -45,9 +87,13 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           </div>
         </div>
         
-        {/* Market Status */}
-        <div className="mt-2 text-sm opacity-90">
-          DSE DSE NEWS: Daily Turnover of Main Board
+        {/* Animated News Ticker */}
+        <div className="mt-2 h-5 overflow-hidden">
+          <div className={`text-sm opacity-90 text-blue-600 transition-all duration-300 ease-in-out transform ${
+            newsVisible ? 'translate-y-0 opacity-90' : '-translate-y-5 opacity-0'
+          }`}>
+            📈 {newsData[currentNewsIndex]}
+          </div>
         </div>
       </div>
 
@@ -60,7 +106,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
               onClick={() => setActiveTab(tab)}
               className={`flex-1 py-3 text-sm font-medium border-b-2 ${
                 activeTab === tab
-                  ? 'border-teal-600 text-teal-600'
+                  ? 'border-red-500 text-rose-600'
                   : 'border-transparent text-gray-500'
               }`}
             >
@@ -115,26 +161,53 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         </div>
       </div>
 
-      {/* Chart Section */}
+      {/* Enhanced Chart Section */}
       <div className="bg-white px-4 py-4 border-b border-gray-100">
-        <div className="h-32 mb-2">
+        <div className="h-40 mb-2">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
+              <XAxis 
+                dataKey="time" 
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 10, fill: '#9CA3AF' }}
+                interval="preserveStartEnd"
+              />
+              <YAxis hide />
               <Line 
                 type="monotone" 
                 dataKey="value" 
                 stroke="#10b981" 
                 strokeWidth={2}
-                dot={false}
+                dot={(props) => {
+                  const { cx, cy, payload } = props;
+                  // Highlight peak and low points
+                  if (payload.value === 5680 || payload.value === 5490) {
+                    return (
+                      <circle 
+                        cx={cx} 
+                        cy={cy} 
+                        r={4} 
+                        fill={payload.value === 5680 ? "#ef4444" : "#22c55e"}
+                        stroke="#fff"
+                        strokeWidth={2}
+                      />
+                    );
+                  }
+                  return null;
+                }}
+                activeDot={{ r: 4, fill: '#10b981' }}
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
         <div className="flex justify-between text-xs text-gray-500">
-          <span>10:00</span>
+          <div>
+            <span className="text-red-500 font-semibold">Low: 5490.00</span>
+          </div>
           <div className="text-right">
-            <div className="text-green-500 font-semibold">5649.00</div>
-            <div className="text-green-500">5636.15</div>
+            <div className="text-green-500 font-semibold">High: 5680.00</div>
+            <div className="text-green-500">Current: 5636.15</div>
           </div>
         </div>
       </div>
@@ -178,7 +251,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           </div>
         </div>
         
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-start mb-3">
           <div>
             <div className="text-sm text-gray-500">Turnover</div>
             <div className="text-lg font-bold text-gray-800">14,521,198,860</div>
@@ -189,13 +262,16 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           </div>
         </div>
         
-        <div className="flex justify-between items-start mt-3">
+        {/* Cash Map Section */}
+        
+      </div>
+<div className="bg-white px-4 py-4 border-b border-gray-100 flex justify-between items-start -mt-10">
           <div>
             <div className="text-sm text-gray-500">Cash Map</div>
-            <div className="flex items-center">
+            <div className="flex items-center mt-1">
               <span className="text-lg font-bold text-gray-800 mr-2">54.18%</span>
-              <div className="w-20 h-2 bg-gray-200 rounded">
-                <div className="w-3/5 h-2 bg-red-500 rounded"></div>
+              <div className="w-20 h-2 bg-gray-200 rounded-full">
+                <div className="w-3/5 h-2 bg-red-500 rounded-full"></div>
               </div>
             </div>
           </div>
@@ -204,17 +280,15 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
             <div className="text-lg font-bold text-green-500">8.36%</div>
           </div>
         </div>
-      </div>
-
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
         <div className="grid grid-cols-5 py-2">
           {[
+             { icon: Briefcase, label: 'Portfolio' },
             { icon: BarChart3, label: 'Market', active: true },
+            { icon: ArrowUpDown, label: 'Buy/Sell' },
             { icon: List, label: 'Watch List' },
-            { icon: FileText, label: 'Quote' },
-            { icon: Briefcase, label: 'Portfolio' },
-            { icon: ArrowUpDown, label: 'Trade' }
+            { icon: FileText, label: 'News' },
           ].map((item, index) => (
             <button
               key={index}
@@ -231,5 +305,6 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
     </div>
   );
 };
+
 
 export default MobileTradingDashboard;
