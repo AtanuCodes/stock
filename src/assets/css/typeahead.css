@@ -1,0 +1,28 @@
+.rbt-menu{
+    box-shadow: 0 0 2px 0 #aaa;
+    width: auto !important;
+    border-radius: 0;
+}
+.rbt-menu a{
+    font-family: 'Poppins', sans-serif;
+    color: #444444 !important;
+}
+
+.typeahead-xxs-border-radius-0{
+    position: static !important;
+}
+
+.compact-input {
+    padding: 0 1px 0 3px !important;
+}
+
+.typeahead-xxs-border-radius-0 .rbt-input-main {
+    padding: 0;
+    border-radius: 0 !important;
+}
+.typeahead-xxs-border-radius-0 .rbt-menu {
+    padding-block: 5px;
+}
+.typeahead-xxs-border-radius-0 .rbt-menu a {
+    padding: 5px 10px;
+}

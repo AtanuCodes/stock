@@ -1,0 +1,41 @@
+.nav {
+  flex-wrap: nowrap;
+}
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+  font-family: 'PoppinsMedium', serif;
+  text-align: center;
+  font-size: 14px;
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: -1px;
+  background: none;
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: transparent;
+  isolation: isolate;
+}
+
+.nav-tabs .nav-link.disabled {
+  color: #6c757d;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: var(--bs-green);
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom: 3px solid var(--bs-green);
+  font-weight: bold;
+}
+
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

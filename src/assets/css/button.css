@@ -1,0 +1,54 @@
+.round-add-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 5px !important;
+}
+.btn-close {
+  background: url('../images/close-btn.png') center/1em auto no-repeat;
+  object-fit: contain;
+  height: 1em;
+  width: 1em;
+}
+
+button {
+  font-family: PoppinsMedium, serif !important;
+}
+
+.btn-action {
+  padding: 3px 8px 3px 8px;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  background-color: green;
+  border: none;
+  border-radius: 25%;
+  box-shadow: 0 3px #999;
+}
+.btn-action_view {
+  padding: 3px 8px 3px 8px;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 25%;
+  box-shadow: 0 3px #999;
+}
+
+.btn-action_view:active {
+  background-color: #05cae9;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btn-action:hover {background-color: darkgreen}
+
+.btn-action:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+

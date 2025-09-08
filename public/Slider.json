@@ -1,0 +1,18 @@
+[
+    {
+      "Name": "s1 banner",
+      "Description": "",
+      "ImageUrl": "../src/assets/images/s1.jpg"
+    },
+    {
+      "Name": "s2 banner",
+      "Description": "",
+      "ImageUrl": "../src/assets/images/s2.jpg"
+    },
+    {
+      "Name": "s3 banner",
+      "Description": "",
+      "ImageUrl": "../src/assets/images/s3.jpg"
+    }
+  ]
+  

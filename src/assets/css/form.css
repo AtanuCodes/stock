@@ -1,0 +1,62 @@
+.form-label {
+  font-size: 10px;
+  color: #000;
+  font-family: 'PoppinsRegular', serif;
+  margin-bottom: 0;
+}
+.form-select-sm {
+    font-family: 'PoppinsRegular', serif;
+    font-size: 12px;
+}
+.textarea, .form-control-sm {
+  border-radius: 0.5rem;
+  border-left-width: 1px;
+  font-family: 'PoppinsRegular', serif;
+  font-size: 12px;
+  padding-inline: 15px !important;
+}
+.form-switch .form-check-input{
+    height: 1.25em;
+}
+.swal2-input{
+  font-family: 'PoppinsRegular', serif !important;
+}
+.validateFocus {
+  border-bottom: 1px;
+  border-color: red !important;
+  /* box-shadow: 0 0 0 0.1rem rgba(255, 0, 0, 0.192) !important; */
+}
+.search-field {
+  outline: 0;
+  border: 0;
+}
+.search-input {
+  border: 0;
+  padding: 0;
+  margin-left: 0.3rem;
+}
+.search-input:focus-visible {
+  outline: 0;
+}
+.search-input-icon {
+  padding-left: 25px !important;
+  background: url("/src/assets/images/Search.svg") no-repeat left;
+  background-size: 15px;
+  background-position-x: 5px;
+}
+input[type="checkbox"]{
+  accent-color: var(--bs-primary);
+}
+.form-select-right-padding-sm {
+  background-position: right 0.25rem center;
+  background-color: #fff;
+}
+
+input[type="radio"]:checked{
+    accent-color: #0f662f;
+}
+
+.skeleton-blog{
+    /*margin-bottom: 2em;*/
+    animation: scale 4s infinite;
+}

@@ -1,0 +1,41 @@
+.modal{
+    scrollbar-color: var(--bs-green) var(--bs-gray-200);
+    scrollbar-width: thin !important;
+}
+.modal::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+.modal::-webkit-scrollbar-track-piece  {
+    background-color:var(--bs-gray-200);
+}
+.modal::-webkit-scrollbar-thumb {
+    height: 30px;
+    border-radius: 4px;
+    background: #ddd;
+}
+.modal::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary);
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+    /*scrollbar-color: var(--bs-green) var(--bs-gray-500);*/
+    /*scrollbar-width: thin;*/
+}
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+html::-webkit-scrollbar-track-piece {
+    background-color: #f5f5f5;
+}
+html::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    border-radius: 4px;
+    background: #ddd;
+}
+html::-webkit-scrollbar-thumb:vertical:hover {
+    background: var(--bs-primary);
+}

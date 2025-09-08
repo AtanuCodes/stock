@@ -1,0 +1,16 @@
+.modal-footer{
+    /*border: none;*/
+    padding: 0.5em;
+}
+.modal-header{
+    padding: 10px 15px 10px 15px;
+}
+.modal-content{
+    padding: 2px;
+}
+.swal2-close:focus {
+    box-shadow: none !important;
+}
+.noPaddingModalBody {
+    padding: 0;
+}

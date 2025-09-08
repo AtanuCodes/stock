@@ -1,0 +1,31 @@
+@font-face {
+    font-family: PoppinsRegular;
+    src: url(../font/Poppins-Regular.ttf) format("truetype");
+    font-weight: bold;
+}
+@font-face {
+    font-family: PoppinsLight;
+    src: url(../font/Poppins-Light.ttf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: PoppinsMedium;
+    src: url(../font/Poppins-Medium.ttf) format("truetype");
+    font-weight: bold;
+}
+@font-face {
+    font-family: PoppinsBold;
+    src: url(../font/Poppins-Bold.ttf) format("truetype");
+    font-weight: bold;
+}
+@font-face {
+    font-family: SegoeUIRegular;
+    src: url('../font/Segoe UI.ttf') format("truetype");
+    font-weight: auto;
+}
+@font-face {
+    font-family: IdlcRegular;
+    src: url('../font/IDLC-Regular.ttf') format("opentype");
+    font-weight: auto;
+}

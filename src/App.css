@@ -1,8 +1,12 @@
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.ValidationError {
+    border-bottom: 1px solid red !important;
 }
 
+.mask2 {
+    -webkit-mask-image: radial-gradient(circle, black 70%, rgba(0, 0, 0, 0) 50%);
+    mask-image: radial-gradient(circle, black 70%, rgba(0, 0, 0, 0) 50%);
+}
 
+.validateFocus {
+    border-bottom: 1px solid red !important;
+}

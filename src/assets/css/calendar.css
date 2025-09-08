@@ -1,0 +1,9 @@
+.color-red {
+    color: red!important;
+}
+.color-black {
+    color: black!important;
+}
+.react-calendar__tile abbr {
+    display: none !important;
+}
