@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, Search, TrendingUp, TrendingDown, ArrowUp } from 'lucide-react';
 import Chart from 'react-apexcharts';
 import BottomNavigation from './bottom';
+import SectionStockChart from "@/Pages/authorized-pages/mobile-dashboard/section-stock-chart.jsx";
 
 // Chart data for ApexCharts
 const chartData = [
@@ -47,142 +48,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
   }, []);
 
   // ApexChart options
-  const chartOptions = {
-    chart: {
-      type: 'line',
-      height: 100,
-      sparkline: {
-        enabled: false
-      },
-      toolbar: {
-        show: false
-      },
-      zoom: {
-        enabled: false
-      },
-      background: 'transparent'
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      curve: 'smooth',
-      width: 2,
-      colors: ['#10b981']
-    },
-    grid: {
-      show: true,
-      borderColor: '#e5e7eb',
-      strokeDashArray: 3,
-      xaxis: {
-        lines: {
-          show: false
-        }
-      },
-      yaxis: {
-        lines: {
-          show: true
-        }
-      },
-      padding: {
-        top: 10,
-        right: 10,
-        bottom: 10,
-        left: 10
-      }
-    },
-    xaxis: {
-      categories: chartCategories,
-      labels: {
-        show: true,
-        style: {
-          colors: '#9ca3af',
-          fontSize: '10px'
-        }
-      },
-      axisBorder: {
-        show: false
-      },
-      axisTicks: {
-        show: false
-      },
-      tickAmount: 3
-    },
-    yaxis: {
-      show: false,
-      min: 5600,
-      max: 5700
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shade: 'light',
-        type: 'vertical',
-        shadeIntensity: 0.2,
-        gradientToColors: ['#10b981'],
-        inverseColors: false,
-        opacityFrom: 0.15,
-        opacityTo: 0,
-        stops: [0, 100]
-      }
-    },
-    markers: {
-      size: 0,
-      hover: {
-        size: 4
-      }
-    },
-    annotations: {
-      yaxis: [
-        {
-          y: 5640,
-          borderColor: '#ef4444',
-          borderWidth: 1,
-          strokeDashArray: 4,
-          label: {
-            borderColor: '#ef4444',
-            style: {
-              color: '#fff',
-              background: '#ef4444',
-              fontSize: '10px'
-            },
-            text: '5640.00',
-            position: 'right'
-          }
-        }
-      ],
-      points: [
-        {
-          x: chartCategories[chartCategories.length - 1],
-          y: 5636.15,
-          marker: {
-            size: 4,
-            fillColor: '#10b981',
-            strokeColor: '#fff',
-            strokeWidth: 2
-          },
-          label: {
-            borderColor: '#10b981',
-            offsetY: 0,
-            style: {
-              color: '#fff',
-              background: '#10b981',
-              fontSize: '10px'
-            },
-            text: '5636.15'
-          }
-        }
-      ]
-    },
-    tooltip: {
-      enabled: false
-    }
-  };
 
-  const chartSeries = [{
-    name: 'DSEX',
-    data: chartData
-  }];
 
   return (
     <div className="min-h-screen bg-gray-50 pb-16">
@@ -274,17 +140,10 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
 <hr/>
       {/* Chart Section - ApexCharts using same pattern as your example */}
       <div className="bg-white px-4 py-4 border-t border-gray-100">
-        <div className="w-full h-24">
-         <Chart 
-  options={chartOptions} 
-  series={chartSeries} 
-  type="line" 
-  height={100} 
-/>
-        </div>
-        
+
         {/* Chart time labels - only showing 10:00 */}
         <div className="flex justify-start mt-1">
+          <SectionStockChart/>
           <span className="text-xs text-gray-500 ml-2">10:00</span>
         </div>
       </div>
