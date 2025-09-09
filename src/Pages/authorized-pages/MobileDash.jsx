@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search, TrendingUp, TrendingDown, BarChart3, Eye, List, FileText, Briefcase, ArrowUpDown } from 'lucide-react';
-import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { Menu, Search, TrendingUp, TrendingDown, ArrowUp } from 'lucide-react';
+import Chart from 'react-apexcharts';
+import BottomNavigation from './bottom';
 
-// Enhanced chart data with peaks and lows
+// Chart data for ApexCharts
 const chartData = [
-  { time: '9:30', value: 5500 },
-  { time: '10:00', value: 5520 },
-  { time: '10:30', value: 5490 }, // Low
-  { time: '11:00', value: 5540 },
-  { time: '11:30', value: 5680 }, // Peak
-  { time: '12:00', value: 5650 },
-  { time: '12:30', value: 5590 },
-  { time: '1:00', value: 5610 },
-  { time: '1:30', value: 5580 },
-  { time: '2:00', value: 5640 },
-  { time: '2:30', value: 5620 },
-  { time: '3:00', value: 5636.15 }
+  5610, 5615, 5620, 5625, 5630, 5635, 5640, 5645, 5650, 5655, 5660, 5665,
+  5670, 5675, 5680, 5678, 5676, 5674, 5672, 5670, 5668, 5665, 5660, 5655,
+  5650, 5645, 5640, 5638, 5636.15
+];
+
+const chartCategories = [
+  '10:00', '10:05', '10:10', '10:15', '10:20', '10:25', '10:30', '10:35', '10:40', '10:45',
+  '10:50', '10:55', '11:00', '11:05', '11:10', '11:15', '11:20', '11:25', '11:30', '11:35',
+  '11:40', '11:45', '11:50', '11:55', '12:00', '12:05', '12:10', '12:15', '12:20'
 ];
 
 // News data for ticker
 const newsData = [
   "BEXIMCO: Board declared 10% cash dividend",
-  "GRAMEENPHONE: Q3 revenue up 8.5% YoY",
+  "GRAMEENPHONE: Q3 revenue up 8.5% YoY", 
   "BRAC BANK: Announces rights issue 1:4 ratio",
   "SQUARE PHARMA: FDA approval for new drug",
-  "WALTON: Export earnings increased 15%",
-  "OLYMPIC IND: New factory inaugurated",
-  "ROBI AXIATA: 5G network expansion announced",
-  "LANKABANGLA: Profit surges 22% in Q3",
-  "CITY BANK: Digital banking services launched",
-  "ACI LIMITED: Strategic partnership with MNC"
+  "WALTON: Export earnings increased 15%"
 ];
+
 
 const MobileTradingDashboard = ({ onMenuClick }) => {
   const [activeTab, setActiveTab] = useState('Market');
@@ -41,29 +35,162 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setNewsVisible(false);
-      
       setTimeout(() => {
         setCurrentNewsIndex((prevIndex) => 
           prevIndex === newsData.length - 1 ? 0 : prevIndex + 1
         );
         setNewsVisible(true);
-      }, 200); // Brief pause for transition
-      
-    }, 3000); // Change news every 3 seconds
+      }, 200);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // ApexChart options
+  const chartOptions = {
+    chart: {
+      type: 'line',
+      height: 100,
+      sparkline: {
+        enabled: false
+      },
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      background: 'transparent'
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth',
+      width: 2,
+      colors: ['#10b981']
+    },
+    grid: {
+      show: true,
+      borderColor: '#e5e7eb',
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        top: 10,
+        right: 10,
+        bottom: 10,
+        left: 10
+      }
+    },
+    xaxis: {
+      categories: chartCategories,
+      labels: {
+        show: true,
+        style: {
+          colors: '#9ca3af',
+          fontSize: '10px'
+        }
+      },
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      tickAmount: 3
+    },
+    yaxis: {
+      show: false,
+      min: 5600,
+      max: 5700
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shade: 'light',
+        type: 'vertical',
+        shadeIntensity: 0.2,
+        gradientToColors: ['#10b981'],
+        inverseColors: false,
+        opacityFrom: 0.15,
+        opacityTo: 0,
+        stops: [0, 100]
+      }
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 4
+      }
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: 5640,
+          borderColor: '#ef4444',
+          borderWidth: 1,
+          strokeDashArray: 4,
+          label: {
+            borderColor: '#ef4444',
+            style: {
+              color: '#fff',
+              background: '#ef4444',
+              fontSize: '10px'
+            },
+            text: '5640.00',
+            position: 'right'
+          }
+        }
+      ],
+      points: [
+        {
+          x: chartCategories[chartCategories.length - 1],
+          y: 5636.15,
+          marker: {
+            size: 4,
+            fillColor: '#10b981',
+            strokeColor: '#fff',
+            strokeWidth: 2
+          },
+          label: {
+            borderColor: '#10b981',
+            offsetY: 0,
+            style: {
+              color: '#fff',
+              background: '#10b981',
+              fontSize: '10px'
+            },
+            text: '5636.15'
+          }
+        }
+      ]
+    },
+    tooltip: {
+      enabled: false
+    }
+  };
+
+  const chartSeries = [{
+    name: 'DSEX',
+    data: chartData
+  }];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pb-16">
       {/* Header */}
       <div className="bg-gray-50 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <button 
-              onClick={onMenuClick}
-              className="p-1"
-            >
+            <button onClick={onMenuClick} className="p-1">
               <Menu className="w-6 h-6" />
             </button>
             <div className="flex items-center space-x-2">
@@ -76,12 +203,12 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <div className="text-xs opacity-90">Un. Gain</div>
-              <div className="font-semibold">0.00%</div>
+              <div className="text-xs text-gray-600">Un. Gain</div>
+              <div className="font-semibold text-sm">0.00%</div>
             </div>
             <div className="text-right">
-              <div className="text-xs opacity-90">BDT</div>
-              <div className="font-semibold">0.00</div>
+              <div className="text-xs text-gray-600">BDT</div>
+              <div className="font-semibold text-sm">0.00</div>
             </div>
             <Search className="w-5 h-5" />
           </div>
@@ -89,7 +216,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         
         {/* Animated News Ticker */}
         <div className="mt-2 h-5 overflow-hidden">
-          <div className={`text-sm opacity-90 text-blue-600 transition-all duration-300 ease-in-out transform ${
+          <div className={`text-sm text-blue-600 transition-all duration-300 ease-in-out transform ${
             newsVisible ? 'translate-y-0 opacity-90' : '-translate-y-5 opacity-0'
           }`}>
             📈 {newsData[currentNewsIndex]}
@@ -97,214 +224,122 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         </div>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="flex">
-          {['Market', 'Top Stocks', 'Indices'].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`flex-1 py-3 text-sm font-medium border-b-2 ${
-                activeTab === tab
-                  ? 'border-red-500 text-rose-600'
-                  : 'border-transparent text-gray-500'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Market Info Header */}
-      <div className="bg-white px-4 py-3 border-b border-gray-100">
+      {/* Close Header - matching screenshot */}
+      <div className="bg-white px-4 py-2 border-b border-gray-100">
         <div className="flex items-center justify-between">
-          <div>
-            <div className="text-sm text-gray-600">Close</div>
-            <div className="font-semibold text-lg">DSE</div>
+          <div className="text-pink-500 text-sm font-medium">Close</div>
+          <div className="flex items-center space-x-2">
+            <span className="font-bold text-gray-800">DSE</span>
+            <ArrowUp className="w-4 h-4 text-gray-600" />
           </div>
-          <div className="text-right">
-            <TrendingUp className="w-4 h-4 text-gray-600 mb-1" />
-            <div className="text-sm text-gray-600">07-09-2025</div>
-          </div>
+          <div className="text-gray-600 text-sm">07-09-2025</div>
         </div>
       </div>
 
-      {/* DSEX Index */}
-      <div className="bg-white px-4 py-4 border-b border-gray-100">
-        <div className="flex items-center space-x-2 mb-3">
-          <span className="font-semibold text-teal-600 text-lg">DSEX</span>
-          <span className="text-gray-500 text-sm">Dhaka (DSEX) Index</span>
-        </div>
-        
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
-            <TrendingUp className="w-6 h-6 text-green-500" />
-            <span className="text-2xl font-bold text-gray-800">5,636.15</span>
+      {/* DSEX Section - exactly matching screenshot */}
+      <div className="bg-white px-4 py-3">
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <div className="flex items-center space-x-2">
+              <span className="font-bold text-gray-800 text-lg">DSEX</span>
+              <span className="text-gray-500 text-sm">DSE Broad Index</span>
+            </div>
           </div>
           <div className="text-right">
             <div className="text-xs text-gray-500">Days Range</div>
-            <div className="text-red-500 text-sm font-semibold">▼</div>
+            <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
           </div>
         </div>
-        
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="bg-green-500 text-white px-2 py-1 rounded text-sm font-semibold">
-            0.39%
-          </div>
-          <span className="text-lg font-semibold text-gray-700">21.87</span>
-          <div className="flex-1"></div>
-          <div className="text-right">
-            <div className="text-xs text-gray-500">52 Wk Range</div>
-            <div className="text-red-500 text-sm font-semibold">▼</div>
-          </div>
-        </div>
-      </div>
 
-      {/* Enhanced Chart Section */}
-      <div className="bg-white px-4 py-4 border-b border-gray-100">
-        <div className="h-40 mb-2">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData}>
-              <XAxis 
-                dataKey="time" 
-                axisLine={false}
-                tickLine={false}
-                tick={{ fontSize: 10, fill: '#9CA3AF' }}
-                interval="preserveStartEnd"
-              />
-              <YAxis hide />
-              <Line 
-                type="monotone" 
-                dataKey="value" 
-                stroke="#10b981" 
-                strokeWidth={2}
-                dot={(props) => {
-                  const { cx, cy, payload } = props;
-                  // Highlight peak and low points
-                  if (payload.value === 5680 || payload.value === 5490) {
-                    return (
-                      <circle 
-                        cx={cx} 
-                        cy={cy} 
-                        r={4} 
-                        fill={payload.value === 5680 ? "#ef4444" : "#22c55e"}
-                        stroke="#fff"
-                        strokeWidth={2}
-                      />
-                    );
-                  }
-                  return null;
-                }}
-                activeDot={{ r: 4, fill: '#10b981' }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="flex justify-between text-xs text-gray-500">
-          <div>
-            <span className="text-red-500 font-semibold">Low: 5490.00</span>
-          </div>
-          <div className="text-right">
-            <div className="text-green-500 font-semibold">High: 5680.00</div>
-            <div className="text-green-500">Current: 5636.15</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Statistics */}
-      <div className="bg-white px-4 py-4 border-b border-gray-100">
-        <div className="grid grid-cols-4 gap-4 text-center">
-          <div>
-            <div className="text-lg font-bold text-gray-800">462</div>
-            <div className="text-xs text-gray-500">Total</div>
-            <div className="flex justify-center mt-1">
-              <div className="w-3 h-6 bg-red-500 mr-1"></div>
-              <div className="w-3 h-6 bg-green-500"></div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center space-x-3">
+            <div className="flex items-center">
+              <TrendingUp className="w-5 h-5 text-green-500 mr-1" />
+              <span className="text-3xl font-bold text-gray-800">5,636.15</span>
             </div>
           </div>
-          <div>
-            <div className="text-lg font-bold text-green-500">298</div>
+          <div className="text-right">
+            <div className="text-xs text-gray-500">52 Wk Range</div>
+            <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <div className="bg-green-500 text-white px-3 py-1 rounded text-sm font-bold">
+            0.39%
+          </div>
+          <span className="text-xl font-bold text-gray-800">21.87</span>
+        </div>
+      </div>
+<hr/>
+      {/* Chart Section - ApexCharts using same pattern as your example */}
+      <div className="bg-white px-4 py-4 border-t border-gray-100">
+        <div className="w-full h-24">
+         <Chart 
+  options={chartOptions} 
+  series={chartSeries} 
+  type="line" 
+  height={100} 
+/>
+        </div>
+        
+        {/* Chart time labels - only showing 10:00 */}
+        <div className="flex justify-start mt-1">
+          <span className="text-xs text-gray-500 ml-2">10:00</span>
+        </div>
+      </div>
+
+      {/* Statistics Section - matching screenshot layout */}
+      <div className="bg-white px-4 py-4 border-b border-t border-gray-100">
+        <div className="grid grid-cols-5 gap-1">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-gray-800 mb-1">462</div>
+            <div className="text-xs text-gray-500 mb-2">Total</div>
+           
+          </div>
+           <div className="flex justify-center space-x-1 mt-1">
+              <div className="w-2 h-8 bg-green-500 rounded-sm"></div>
+              <div className="w-2 h-5 bg-red-500 rounded-sm"></div>
+              <div className="w-2 h-3 bg-gray-500 rounded-sm"></div>
+            </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-600 mb-1">298</div>
             <div className="text-xs text-gray-500">Up</div>
           </div>
-          <div>
-            <div className="text-lg font-bold text-red-500">144</div>
+          
+          <div className="text-center">
+            <div className="text-2xl font-bold text-red-600 mb-1">144</div>
             <div className="text-xs text-gray-500">Down</div>
           </div>
-          <div>
-            <div className="text-lg font-bold text-gray-800">20</div>
+          
+          <div className="text-center">
+            <div className="text-2xl font-bold text-gray-800 mb-1">20</div>
             <div className="text-xs text-gray-500">Unchanged</div>
           </div>
         </div>
       </div>
 
-      {/* Volume and Trades */}
-      <div className="bg-white px-4 py-4 border-b border-gray-100">
-        <div className="flex justify-between items-start mb-3">
-          <div>
-            <div className="text-sm text-gray-500">Volume</div>
-            <div className="text-lg font-bold text-gray-800">467,220,179</div>
-          </div>
-          <div className="text-right">
-            <div className="text-sm text-gray-500">Trades</div>
-            <div className="text-lg font-bold text-gray-800">347,706</div>
-          </div>
-        </div>
-        
-        <div className="flex justify-between items-start mb-3">
-          <div>
-            <div className="text-sm text-gray-500">Turnover</div>
-            <div className="text-lg font-bold text-gray-800">14,521,198,860</div>
-          </div>
-          <div className="text-right">
-            <div className="text-sm text-gray-500">YTD</div>
-            <div className="text-lg font-bold text-green-500">7.63%</div>
-          </div>
-        </div>
-        
-        {/* Cash Map Section */}
-        
-      </div>
-<div className="bg-white px-4 py-4 border-b border-gray-100 flex justify-between items-start -mt-10">
-          <div>
-            <div className="text-sm text-gray-500">Cash Map</div>
+ <div className='flex justify-between m-2'>
+           <div>
+             <div className="text-sm text-gray-500">Cash Map</div>
             <div className="flex items-center mt-1">
               <span className="text-lg font-bold text-gray-800 mr-2">54.18%</span>
               <div className="w-20 h-2 bg-gray-200 rounded-full">
                 <div className="w-3/5 h-2 bg-red-500 rounded-full"></div>
               </div>
             </div>
-          </div>
+           </div>
+         
           <div className="text-right">
             <div className="text-sm text-gray-500">Net Cash%</div>
             <div className="text-lg font-bold text-green-500">8.36%</div>
           </div>
         </div>
+
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-        <div className="grid grid-cols-5 py-2">
-          {[
-             { icon: Briefcase, label: 'Portfolio' },
-            { icon: BarChart3, label: 'Market', active: true },
-            { icon: ArrowUpDown, label: 'Buy/Sell' },
-            { icon: List, label: 'Watch List' },
-            { icon: FileText, label: 'News' },
-          ].map((item, index) => (
-            <button
-              key={index}
-              className={`flex flex-col items-center py-2 ${
-                item.active ? 'text-teal-600' : 'text-gray-500'
-              }`}
-            >
-              <item.icon className="w-5 h-5 mb-1" />
-              <span className="text-xs">{item.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <BottomNavigation />
     </div>
   );
 };
-
 
 export default MobileTradingDashboard;
