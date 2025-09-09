@@ -29,7 +29,7 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-red-200/80 to-white px-4 py-2 border-b border-red-200 ">
+    <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground px-4 py-2 border-b border-red-200 ">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
@@ -37,8 +37,8 @@ const NavigationTabs = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-3 py-1.5 text-sm transition-all duration-200 rounded ${
               activeTab === tab
-                ? "bg-white/70 text-red-500 font-bold border-b-2 border-red-500"
-                : "text-gray-700 hover:text-black hover:bg-white/50"
+                ? "bg-white/70 dark:bg-card text-red-500 dark:text-foreground font-bold border-b-2 border-red-500"
+                : "text-gray-700 dark:text-gray-400 hover:text-black hover:bg-white/50"
             }`}
           >
             {tab}
@@ -87,15 +87,15 @@ const IndexOverview = () => {
   ];
 
   return (
-    <div className="bg-white border-b border-gray-300">
+    <div className="bg-card text-foreground border-b border-gray-300">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-200/80 to-white border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-700">
+          <h3 className="text-sm font-semibold ">
             Index Overview - DSE
           </h3>
           <div className="flex items-center space-x-2">
-            <span className="text-xs text-red-600">Volume</span>
+            <span className="text-xs text-red-500">Volume</span>
             <ChevronDown className="w-3 h-3 text-red-600" />
           </div>
         </div>
@@ -110,15 +110,15 @@ const IndexOverview = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex">
-                <div className="text-xs font-semibold text-gray-900">
+                <div className="text-xs font-semibold">
                   {index.name}
                 </div>
-                <div className="text-xs text-gray-500 ml-1">
+                <div className="text-xs text-gray-500 dark:text-gay-200 ml-1">
                   {index.fullName}
                 </div>
               </div>
               <div className="flex gap-2 text-right">
-                <div className="text-xs font-bold text-gray-900">
+                <div className="text-xs font-bold ">
                   {index.value}
                 </div>
                 <div className="flex items-center space-x-1">
@@ -157,13 +157,13 @@ const TopGainers = () => {
   ];
 
   return (
-    <div className="bg-green-50 border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white border-b border-emerald-200 px-4 py-2">
+    <div className="bg-green-50 dark:bg-black  border-b border-gray-300">
+      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-emerald-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-700">
+          <h3 className="text-sm font-semibold ">
             Top Gainers
           </h3>
-          <TrendingUp className="w-4 h-4 text-emerald-600" />
+          <TrendingUp className="w-4 h-4 text-emerald-500" />
         </div>
       </div>
 
@@ -175,12 +175,12 @@ const TopGainers = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex">
-                <div className="text-xs font-semibold text-gray-900">
+                <div className="text-xs font-semibold ">
                   {stock.symbol}
                 </div>
               </div>
               <div className="flex text-right gap-1">
-                <div className="text-xs font-bold text-gray-900">
+                <div className="text-xs font-bold ">
                   {stock.price}
                 </div>
                 <div className="flex items-center space-x-1">
@@ -208,11 +208,11 @@ const TopLosers = () => {
   ];
 
   return (
-    <div className="bg-red-50 border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white border-b border-red-200 px-4 py-2">
+    <div className="bg-red-50 dark:bg-black text-foreground border-b border-gray-300">
+      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-700">Top Losers</h3>
-          <TrendingDown className="w-4 h-4 text-red-600" />
+          <h3 className="text-sm font-semibold ">Top Losers</h3>
+          <TrendingDown className="w-4 h-4 text-red-500" />
         </div>
       </div>
 
@@ -224,12 +224,12 @@ const TopLosers = () => {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-900">
+                <div className="text-xs font-semibold ">
                   {stock.symbol}
                 </div>
               </div>
               <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold text-gray-900">
+                <div className="text-xs font-bold ">
                   {stock.price}
                 </div>
                 <div className="flex items-center space-x-1">
@@ -257,11 +257,11 @@ const MostActive = () => {
   ];
 
   return (
-    <div className="bg-blue-50 border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white border-b border-blue-200 px-4 py-2">
+    <div className="bg-blue-50 dark:bg-black border-b border-gray-300">
+      <div className="bg-gradient-to-r from-red-200/80 to-white  dark:from-black dark:to-neutral-800 text-foreground border-b border-blue-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-700">Most Active</h3>
-          <Activity className="w-4 h-4 text-blue-600" />
+          <h3 className="text-sm font-semibold ">Most Active</h3>
+          <Activity className="w-4 h-4 text-blue-500" />
         </div>
       </div>
 
@@ -273,12 +273,12 @@ const MostActive = () => {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-900">
+                <div className="text-xs font-semibold ">
                   {stock.symbol}
                 </div>
               </div>
               <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold text-gray-900">
+                <div className="text-xs font-bold ">
                   {stock.price}
                 </div>
                 <div className="text-xs text-blue-600 font-medium">
@@ -331,15 +331,15 @@ const XCHGIndexOverview = () => {
   ];
 
   return (
-    <div className="bg-white border-b border-gray-300 mx-2">
-      <div className="bg-gradient-to-r from-red-200/80 to-white border-b border-purple-200 px-4 py-2">
+    <div className="bg-card text-foreground border-b border-gray-300 mx-2">
+      <div className="bg-gradient-to-r from-red-200/80 to-white  dark:from-black dark:to-neutral-800 text-foreground border-b border-purple-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-gray-700">
+          <h3 className="text-sm font-semibold ">
             Index Overview - XCHG
           </h3>
           <div className="flex items-center space-x-2">
-            <span className="text-xs text-purple-600">Volume</span>
-            <ChevronDown className="w-3 h-3 text-purple-600" />
+            <span className="text-xs text-red-500">Volume</span>
+            <ChevronDown className="w-3 h-3 text-red-600" />
           </div>
         </div>
       </div>
@@ -352,12 +352,12 @@ const XCHGIndexOverview = () => {
           >
             <div className="flex items-center justify-between">
               <div className="flex">
-                <div className="text-xs font-semibold text-gray-900">
+                <div className="text-xs font-semibold">
                   {index.name}
                 </div>
               </div>
               <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold text-gray-900">
+                <div className="text-xs font-bold ">
                   {index.value}
                 </div>
                 <div className="flex items-center space-x-1">
@@ -494,10 +494,10 @@ const XCHGIndexOverview = () => {
 // Main Market Overview Section Component
 const MarketOverviewSection = () => {
   return (
-    <div className="bg-gray-100 mx-2 border-gray-300 mb-">
+    <div className="bg-gray-100 mx-2 border-gray-300 ">
       <NavigationTabs />
 
-      <div className="grid grid-cols-5 h-full mb-1">
+      <div className="grid grid-cols-5 h-full w-full mb-1">
         <div className="">
           <IndexOverview />
         </div>

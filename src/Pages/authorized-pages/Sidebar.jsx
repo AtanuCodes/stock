@@ -19,6 +19,8 @@ import {
   LogOut,
   Clock
 } from 'lucide-react';
+import logo from "../../assets/minilogo.svg"
+
 
 const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
   // Get current time for last login
@@ -89,13 +91,13 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
       }`}>
         
         {/* Header - Fixed */}
-        <div className="bg-gradient-to-r from-rose-100 to-white border-b border-border text-gray-700 px-4 py-4 shadow-lg">
+        <div className="bg-gradient-to-b from-red-200/70 to-white border-b border-border text-gray-700 px-4 py-4 shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-                <TrendingUp className="w-5 h-5 text-teal-600" />
-              </div>
-              <span className="font-bold text-lg">Trade Express</span>
+               <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                               <img src={logo} alt="logo" className="w-full h-full" />
+                            </div>
+              <span className="font-bold text-lg">I-Trade</span>
             </div>
             <div className="flex items-center space-x-3">
               <Share2 className="w-5 h-5 hover:text-teal-200 cursor-pointer transition-colors" />
@@ -106,12 +108,12 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
           
           {/* User Info with Last Login */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+            <div className="w-12 h-12 bg-white/85 rounded-full flex items-center justify-center backdrop-blur-sm">
               <User className="w-6 h-6" />
             </div>
             <div className="flex-1">
               <div className="text-sm opacity-80">Logged in as</div>
-              <div className="font-semibold text-base">{userName}</div>
+              <div className="font-semibold text-sm">{userName}</div>
               <div className="flex items-center text-xs opacity-70 mt-1">
                 <Clock className="w-3 h-3 mr-1" />
                 <span>Last login: {getLastLoginTime()}</span>

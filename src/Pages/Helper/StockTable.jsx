@@ -40,49 +40,49 @@ const StockActionModal = ({ isOpen, onClose, stock }) => {
       icon: Plus,
       label: "Add to WatchList",
       shortcut: "",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: List,
       label: "Detail Quote",
       shortcut: "Alt + D",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: Clock,
       label: "Time and Sales",
       shortcut: "Alt + T",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: Target,
       label: "Depth By Price",
       shortcut: "Alt + P",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: Users,
       label: "Depth By Order",
       shortcut: "Alt + O",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: BarChart3,
       label: "Chart",
       shortcut: "Alt + C",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: Bell,
       label: "Alerts",
       shortcut: "Alt + A",
-      color: "text-gray-700",
+      color: "",
     },
     {
       icon: Star,
       label: "Converged Depth By Price",
       shortcut: "",
-      color: "text-gray-700",
+      color: "",
     },
   ];
 
@@ -92,10 +92,10 @@ const StockActionModal = ({ isOpen, onClose, stock }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-xl border border-gray-200 min-w-[280px] mt-20 ml-8"
+        className="bg-white dark:bg-black/90 dark:text-foreground rounded-lg shadow-xl border border-gray-200 min-w-[280px] mt-20 ml-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-r from-red-500 to-red-700 text-white px-4 py-3 rounded-t-lg">
+        <div className="bg-gradient-to-r from-red-500 to-red-700 text-foreground px-4 py-3 rounded-t-lg">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-semibold text-lg">{stock.symbol}</h3>
@@ -114,14 +114,14 @@ const StockActionModal = ({ isOpen, onClose, stock }) => {
             >
               <div className="flex items-center space-x-3">
                 <item.icon
-                  className={`w-4 h-4 ${item.color} group-hover:scale-110 transition-transform`}
+                  className={`w-4 h-4 ${item.color} dark:text-white group-hover:scale-110 transition-transform`}
                 />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                <span className="text-sm font-medium text-foreground group-hover:text-gray-900">
                   {item.label}
                 </span>
               </div>
               {item.shortcut && (
-                <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">
+                <span className="text-xs text-foreground bg-gray-100  dark:bg-gray-500 px-2 py-1 rounded">
                   {item.shortcut}
                 </span>
               )}
@@ -428,17 +428,18 @@ const MainStockTable = () => {
   };
 
   return (
-    <div className="bg-white mx-2 border border-gray-300">
+    <div className="bg-card mx-2 border border-gray-300">
       {/* Header Section */}
       <div className="border-b border-gray-200">
         {/* Main Tabs */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-red-200/80 to-white text-black">
+        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-red-200/80 to-white
+         dark:from-black dark:to-neutral-800">
           <div className="flex items-center">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 className={`px-3 py-1 text-xs font-medium rounded transition-all ${
-                  index === 1 ? "bg-red-600/85 text-white shadow" : ""
+                  index === 1 ? "bg-red-600/85 dark:bg-red-500 text-white shadow" : ""
                 }`}
               >
                 {tab}
@@ -448,28 +449,28 @@ const MainStockTable = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <Settings className="w-4 h-4 text-gray-600 cursor-pointer" />
-            <MoreHorizontal className="w-4 h-4 text-gray-600 cursor-pointer" />
-            <X className="w-4 h-4 text-gray-600 cursor-pointer" />
+            <Settings className="w-4 h-4 text-foreground cursor-pointer" />
+            <MoreHorizontal className="w-4 h-4 text-foreground cursor-pointer" />
+            <X className="w-4 h-4 text-foreground cursor-pointer" />
           </div>
         </div>
 
         {/* Sub Navigation */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gray-50 border-b border-gray-200">
+        <div className="flex items-center justify-between px-2 py-1 bg-gray-50 dark:bg-gray-700 border-b border-gray-200">
           <div className="flex items-center space-x-1">
             <div className="flex items-center space-x-1 mr-4">
-              <Search className="w-3 h-3 text-gray-500" />
-              <span className="text-xs text-gray-600">Filter</span>
+              <Search className="w-3 h-3 text-foreground" />
+              <span className="text-xs text-foreground">Filter</span>
             </div>
 
             {subTabs.map((subTab) => (
               <button
                 key={subTab}
                 onClick={() => setActiveTab(subTab)}
-                className={`px-2 py-1 text-xs rounded transition-all bg-gray-200 ${
+                className={`px-2 py-1 text-xs rounded transition-all bg-card border border-gray-300 dark:border-none ${
                   activeTab === subTab
-                    ? "bg-gray-200 text-gray-700 font-bold"
-                    : "text-gray-600 hover:text-gray-800 hover:bg-gray-100"
+                    ?"bg-red-600/85 dark:bg-red-500 text-white"
+                    : "text-foreground hover:text-gray-800 hover:bg-gray-100 "
                 }`}
               >
                 {subTab}
@@ -480,7 +481,7 @@ const MainStockTable = () => {
             ))}
           </div>
 
-          <div className="flex items-center space-x-3 text-xs text-gray-600">
+          <div className="flex items-center space-x-3 text-xs text-foreground">
             <label className="cursor-pointer flex items-center space-x-1">
               <input type="checkbox" className="cursor-pointer" />
               <span>Today Traded</span>
@@ -501,71 +502,71 @@ const MainStockTable = () => {
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-2 py-2 text-left text-gray-700 font-medium">
+            <tr className="bg-card text-foreground  border-b border-gray-200">
+              <th className="px-2 py-2 text-left  font-medium">
                 <div className="flex items-center">
                   <span>Symbol</span>
                   <ArrowUpDown className="w-3 h-3 ml-1" />
                 </div>
               </th>
-              <th className="px-2 py-2 text-left text-gray-700 font-medium">
+              <th className="px-2 py-2 text-left  font-medium">
                 S.Description
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 <div className="flex items-center justify-end">
                   <span>Last Traded</span>
                   <ArrowUpDown className="w-3 h-3 ml-1" />
                 </div>
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 Last Qty
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 Chg
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 % Chg
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 Volume
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium bg-green-50">
+              <th className="px-2 py-2 text-right  font-medium bg-green-50 dark:bg-green-600">
                 Bid
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium bg-green-50">
+              <th className="px-2 py-2 text-right  font-medium bg-green-50 dark:bg-green-600">
                 Bid Qty
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium bg-red-50">
+              <th className="px-2 py-2 text-right  font-medium bg-red-50 dark:bg-red-600/85">
                 Offer
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium bg-red-50">
+              <th className="px-2 py-2 text-right  font-medium bg-red-50 dark:bg-red-600/85">
                 Offer Qty
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 <div className="flex items-center justify-end">
                   <span>Trades</span>
                   <ChevronDown className="w-3 h-3 ml-1" />
                 </div>
               </th>
-              <th className="px-2 py-2 text-center text-gray-700 font-medium">
+              <th className="px-2 py-2 text-center  font-medium">
                 L.T Date
               </th>
-              <th className="px-2 py-2 text-center text-gray-700 font-medium">
+              <th className="px-2 py-2 text-center  font-medium">
                 L.T Time
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 Open
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 High
               </th>
-              <th className="px-2 py-2 text-right text-gray-700 font-medium">
+              <th className="px-2 py-2 text-right  font-medium">
                 Low
               </th>
-              <th className="px-2 py-2 text-center text-gray-700 font-medium">
+              <th className="px-2 py-2 text-center  font-medium">
                 Settlement Type
               </th>
-              <th className="px-2 py-2 text-center text-gray-700 font-medium">
+              <th className="px-2 py-2 text-center  font-medium">
                 Symbol Category
               </th>
             </tr>
@@ -575,8 +576,8 @@ const MainStockTable = () => {
             {stockData.map((stock, index) => (
               <tr
                 key={stock.symbol}
-                className={`border-b border-gray-100 hover:bg-blue-50 ${
-                  index % 2 === 1 ? "bg-gray-100" : "bg-white"
+                className={`border-b border-gray-100 hover:bg-blue-50 dark:hover:bg-slate-500 ${
+                  index % 2 === 1 ? "bg-gray-100 dark:bg-gray-700" : "bg-card"
                 }`}
               >
                 <td className="px-2 py-2">
@@ -593,7 +594,7 @@ const MainStockTable = () => {
                       )}
                     </button> */}
                     <span
-                      className="text-blue-600 font-medium cursor-pointer hover:underline"
+                      className="text-blue-600 dark:text-blue-300 font-medium cursor-pointer hover:underline"
                       onClick={() => openModal(stock)}
                     >
                       {stock.symbol}
@@ -601,20 +602,20 @@ const MainStockTable = () => {
                   </div>
                 </td>
 
-                <td className="px-2 py-1 text-gray-700">{stock.description}</td>
+                <td className="px-2 py-1 ">{stock.description}</td>
 
-                <td className="px-2 py-1 text-right font-medium text-blue-600">
+                <td className="px-2 py-1 text-right font-medium text-blue-500 dark:text-blue-100">
                   {stock.lastTraded.toFixed(2)}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.lastQty.toLocaleString()}
                 </td>
 
                 <td className="px-2 py-1 text-right font-medium">
                   <span
                     className={
-                      stock.chg >= 0 ? "text-green-600" : "text-red-600"
+                      stock.chg >= 0 ? "text-green-600 dark:text-green-300" : "text-red-600 dark:text-red-500"
                     }
                   >
                     {stock.chg > 0 ? "+" : ""}
@@ -625,7 +626,7 @@ const MainStockTable = () => {
                 <td className="px-2 py-1 text-right font-medium">
                   <span
                     className={
-                      stock.chgPercent >= 0 ? "text-green-600" : "text-red-600"
+                      stock.chgPercent >= 0 ? "text-green-600 dark:text-green-300" : "text-red-600 dark:text-red-500"
                     }
                   >
                     {stock.chgPercent > 0 ? "+" : ""}
@@ -633,47 +634,47 @@ const MainStockTable = () => {
                   </span>
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.volume}
                 </td>
 
-                <td className="px-2 py-1 text-right font-medium text-green-700 bg-green-50">
+                <td className="px-2 py-1 text-right font-medium text-green-700 bg-green-50 dark:text-green-100 dark:bg-green-700">
                   {stock.bid.toFixed(2)}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700 bg-green-50">
+                <td className="px-2 py-1 text-right  bg-green-50 dark:text-green-100 dark:bg-green-700">
                   {stock.bidQty.toLocaleString()}
                 </td>
 
-                <td className="px-2 py-1 text-right font-medium text-red-700 bg-red-50">
+                <td className="px-2 py-1 text-right font-medium text-red-700 bg-red-50 dark:text-red-100 dark:bg-red-700/80">
                   {stock.offer.toFixed(2)}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700 bg-red-50">
+                <td className="px-2 py-1 text-right  bg-red-50 dark:text-red-100 dark:bg-red-700/80">
                   {stock.offerQty.toLocaleString()}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.trades.toLocaleString()}
                 </td>
 
-                <td className="px-2 py-1 text-center text-gray-600">
+                <td className="px-2 py-1 text-center text-foreground">
                   {stock.ltDate}
                 </td>
 
-                <td className="px-2 py-1 text-center text-gray-600">
+                <td className="px-2 py-1 text-center text-foreground">
                   {stock.ltTime}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.open.toFixed(2)}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.high.toFixed(2)}
                 </td>
 
-                <td className="px-2 py-1 text-right text-gray-700">
+                <td className="px-2 py-1 text-right ">
                   {stock.low.toFixed(2)}
                 </td>
 

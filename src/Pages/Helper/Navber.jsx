@@ -71,7 +71,7 @@ const ProfessionalChart = ({
   );
 };
 const CircularProgress = ({ percentage, color }) => {
-  const radius = 20;
+  const radius = 18;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
@@ -122,14 +122,14 @@ const TickerRibbon = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-gray-50 border-b border-red-100 overflow-hidden w-[1200px]">
-      <div className="whitespace-nowrap animate-marquee flex items-center space-x-6 py-1.5 px-3">
+    <div className="flex flex-col bg-card text-foreground border-b border-red-100 dark:border-none overflow-hidden w-[1200px]">
+      <div className="whitespace-nowrap animate-marquee flex items-center space-x-6 py-1.5 px-3 mb-2">
         {tickerData.concat(tickerData).map((item, index) => (
           <div
             key={index}
             className="flex items-center space-x-1.5 text-xs font-medium min-w-max"
           >
-            <span className="text-gray-700">{item.symbol}</span>
+            <span className="text-gray-700 dark:text-white">{item.symbol}</span>
             <span
               className={item.isNegative ? "text-red-500" : "text-emerald-500"}
             >
@@ -154,7 +154,7 @@ const TickerRibbon = () => {
             <div>Trades</div>
           </div>
           <div>
-            <div className="font-bold text-emerald-600">7.8%</div>
+            <div className="font-bold text-emerald-600 dark:text-emerald-400">7.8%</div>
             <div>YTD %</div>
           </div>
         </div>
@@ -169,7 +169,7 @@ const TickerRibbon = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-1">
-            <div className="text-green-600">157</div>
+            <div className="text-emerald-600 dark:text-emerald-400">157</div>
             <div>Up</div>
           </div>
           <div className="flex flex-col items-center space-y-1">
@@ -188,16 +188,16 @@ const TickerRibbon = () => {
 
 const Header = () => {
   return (
-    <div className="bg-white to-white text-black">
+    <div className="bg-card text-foreground">
       <Topnav />
-      <div className="px-2 py-2.5 bg-white text-gray-800 border-t border-red-500/20">
+      <div className="px-2 py-2.5 bg-card text-foreground border-t border-red-500/20 dark:border-gray-500/70">
         <div className="flex w-full justify-between items-center">
           {/* Left: Market Cards */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             {/* DSE Card */}
-            <div className="bg-white rounded-lg shadow-md border border-gray-200 p-3 hover:shadow-lg transition-all duration-200 min-w-[140px]">
+            <div className="bg-card rounded-lg shadow-md border border-gray-200  p-3 hover:shadow-lg transition-all duration-200 min-w-[140px]">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-semibold text-gray-600 flex items-center">
+                <span className="text-xs font-semibold text-foreground flex items-center">
                   <span className="font-bold">DSE</span>
                   <ChevronDown className="w-3 h-3 ml-1" />
                 </span>
@@ -207,13 +207,13 @@ const Header = () => {
                   <div className="text-sm text-red-500">Close</div>
                 </div>
               </div>
-              <div className="text-xs text-gray-900">08-09-2025</div>
+              <div className="text-xs text-foreground">09-09-2025</div>
             </div>
 
             {/* DSEX Card */}
-            <div className="bg-white rounded-lg shadow-md border border-gray-200 p-3.5 hover:shadow-lg transition-all duration-200 min-w-[140px]">
+            <div className="bg-card rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-all duration-200 min-w-[140px]">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-semibold text-gray-600 flex items-center">
+                <span className="text-xs font-semibold text-foreground flex items-center">
                   <span className="font-bold">DSEX</span>
                   <ChevronDown className="w-3 h-3 ml-1" />
                 </span>
@@ -241,16 +241,16 @@ const Header = () => {
           <div className="flex justify-between items-center w-full">
             <TickerRibbon />
 
-            <div className="flex justify-between text-xs text-gray-700">
+            <div className="flex justify-between text-xs text-foreground">
               <div className="flex justify-end items-end space-y-2">
-                <div className="bg-white p-2 shadow-sm border-r flex space-x-6 border-gray-300">
+                <div className="bg-card p-2 shadow-sm rounded-lg border-r flex space-x-6 border-gray-300 dark:border dark:border-gray-100">
                   <div className="text-center">
                     <CircularProgress percentage={46.97} color="#10b981" />
-                    <div className="text-xs text-gray-500">Cash Map %</div>
+                    <div className="text-xs text-foreground">Cash Map %</div>
                   </div>
                   <div className="text-center">
                     <CircularProgress percentage={6.05} color="#ef4444" />
-                    <div className="text-xs text-gray-500">Net Cash %</div>
+                    <div className="text-xs text-foreground">Net Cash %</div>
                   </div>
                 </div>
               </div>

@@ -217,7 +217,7 @@ const MainStockTable = () => {
                   onClick={() => setActiveTab(subTab)}
                   className={`px-2 py-1 text-xs rounded transition-all ${
                     activeTab === subTab
-                      ? 'bg-white/20 text-white font-medium'
+                      ? 'bg-white/20 text-foreground font-medium'
                       : 'text-red-100 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -525,16 +525,7 @@ const MainStockTable = () => {
         </table>
       </div>
 
-      {/* Footer */}
-      <div className="bg-gray-50 px-4 py-3 border-t border-gray-200">
-        <div className="flex items-center justify-between text-sm text-gray-600">
-          <div>Showing 1-5 of 2,000+ stocks</div>
-          <div className="flex items-center space-x-2">
-            <Activity className="w-4 h-4 text-green-500" />
-            <span>Live Market Data</span>
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 };

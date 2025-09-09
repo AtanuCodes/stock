@@ -9,7 +9,7 @@ import {
   Moon,
 } from "lucide-react";
 import df from "../../assets/DFLOGO.svg";
-import Wlogo from "../../assets/Wlogo.svg";
+import Wlogo from "../../assets/white.svg";
 export default function Topnav() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -48,10 +48,10 @@ export default function Topnav() {
         </div>
 
         {/* Search Box */}
-        <div className="flex items-center bg-red-50/50 dark:bg-gray-100 backdrop-blur-sm border border-red-100 dark:border-gray-100 px-3 py-2 rounded-lg">
-          <Search className="w-4 h-4 mr-2 text-gray-600" />
+        <div className="flex items-center bg-red-50/50 dark:bg-transparent backdrop-blur-sm border border-red-100 dark:border-gray-50/50 px-3 py-2 rounded-lg">
+          <Search className="w-4 h-4 mr-2 text-foreground" />
           <input
-            className="bg-transparent placeholder-gray-600 text-card border-none outline-none w-52 text-sm"
+            className="bg-transparent placeholder-gray-600 dark:placeholder-gray-50 text-card border-none outline-none w-52 text-sm"
             placeholder="Search ..."
           />
         </div>

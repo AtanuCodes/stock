@@ -53,9 +53,9 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="min-h-screen  pb-16">
       {/* Header */}
-      <div className="bg-gray-50 px-4 py-3">
+      <div className="bg-gray-50 px-2 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <button onClick={onMenuClick} className="p-1">
@@ -69,14 +69,14 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 bg-gradient-to-br from-red-200/60 to-white px-4 rounded-lg">
             <div className="text-right">
               <div className="text-xs text-gray-600">Un. Gain</div>
-              <div className="font-semibold text-sm">0.00%</div>
+              <div className=" text-sm">0.00%</div>
             </div>
             <div className="text-right">
               <div className="text-xs text-gray-600">BDT</div>
-              <div className="font-semibold text-sm">0.00</div>
+              <div className=" text-sm">0.00</div>
             </div>
             <Search className="w-5 h-5" />
           </div>
@@ -129,7 +129,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
               <span className="text-gray-500 text-sm">DSE Broad Index</span>
             </div>
           </div>
-          <div className="text-right">
+          <div className="text-right mr-2">
             <div className="text-xs text-gray-500">Days Range</div>
             <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
           </div>
@@ -157,7 +157,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
       </div>
 
       {/* Chart Section - ApexCharts using same pattern as your example */}
-      <div className="bg-white px-4 py-4 border-t border-gray-100">
+      <div className="bg-white px-2 py-2 border-t border-gray-100">
 
         {/* Chart time labels - only showing 10:00 */}
         <div className="flex justify-start mt-1">

@@ -7,7 +7,7 @@ import MainStockTable from './stocktable';
 
 const TradingDashboard = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="">
       <Header />
     <MarketOverviewSection/>
     <MainStockTable/>

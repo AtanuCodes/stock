@@ -6,10 +6,10 @@ import News from "../../Helper/News";
 
 const TradingDashboard = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="">
       <Header />
 
-      <div className="grid grid-cols-[9fr,2fr] gap-1] gap-0">
+      <div className="grid grid-cols-[9fr,2fr] gap-0] gap-0">
         <div className="">
           <MarketOverviewSection />
           <MainStockTable />
