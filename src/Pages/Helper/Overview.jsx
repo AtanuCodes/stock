@@ -29,7 +29,7 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground px-4 py-2 border-b border-red-200 ">
+    <div className="bg-gradient-to-br from-red-600 to-gray-800/90 dark:from-black dark:to-neutral-800 text-foreground px-4 py-2 border-b border-red-200 ">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
@@ -38,7 +38,7 @@ const NavigationTabs = () => {
             className={`px-3 py-1.5 text-sm transition-all duration-200 rounded ${
               activeTab === tab
                 ? "bg-white/70 dark:bg-card text-red-500 dark:text-foreground font-bold border-b-2 border-red-500"
-                : "text-gray-700 dark:text-gray-400 hover:text-black hover:bg-white/50"
+                : "text-white dark:text-gray-400 hover:text-black hover:bg-white/50"
             }`}
           >
             {tab}
@@ -89,7 +89,7 @@ const IndexOverview = () => {
   return (
     <div className="bg-card text-foreground border-b border-gray-300">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">
             Index Overview - DSE
@@ -158,7 +158,7 @@ const TopGainers = () => {
 
   return (
     <div className="bg-green-50 dark:bg-neutral-800  border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-emerald-200 px-4 py-2">
+      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-emerald-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">
             Top Gainers
@@ -209,7 +209,7 @@ const TopLosers = () => {
 
   return (
     <div className="bg-red-50 dark:bg-black text-foreground border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">Top Losers</h3>
           <TrendingDown className="w-4 h-4 text-red-500" />
@@ -258,7 +258,7 @@ const MostActive = () => {
 
   return (
     <div className="bg-blue-50 dark:bg-black border-b border-gray-300">
-      <div className="bg-gradient-to-r from-red-200/80 to-white  dark:from-black dark:to-neutral-800 text-foreground border-b border-blue-200 px-4 py-2">
+      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90  dark:from-black dark:to-neutral-800 text-foreground border-b border-blue-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">Most Active</h3>
           <Activity className="w-4 h-4 text-blue-500" />
@@ -332,7 +332,7 @@ const XCHGIndexOverview = () => {
 
   return (
     <div className="bg-card text-foreground border-b border-gray-300 mx-2">
-      <div className="bg-gradient-to-r from-red-200/80 to-white  dark:from-black dark:to-neutral-800 text-foreground border-b border-purple-200 px-4 py-2">
+      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90  dark:from-black dark:to-neutral-800 text-foreground border-b border-purple-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">
             Index Overview - XCHG
@@ -390,108 +390,6 @@ const XCHGIndexOverview = () => {
   );
 };
 
-// News Flash Component
-// const NewsFlash = () => {
-//   const [activeNewsTab, setActiveNewsTab] = useState('All');
-//   const newsItems = [
-//     {
-//       title: 'DSE NEWS: Daily Turnover of Main Board',
-//       category: 'DSE',
-//       time: '4 hours ago',
-//       priority: 'high',
-//       type: 'market'
-//     },
-//     {
-//       title: 'BIOCOM: Query Response',
-//       category: 'BIOCOM/FB',
-//       time: '12:15',
-//       priority: 'medium',
-//       type: 'company'
-//     },
-//     {
-//       title: 'ARISTONF: Weekly NAV',
-//       category: 'ARISTONF/FB',
-//       time: '11:50',
-//       priority: 'medium',
-//       type: 'fund'
-//     },
-//     {
-//       title: 'EBLNRBMF: Weekly NAV',
-//       category: 'EBLNRBMF/FB',
-//       time: '11:51',
-//       priority: 'low',
-//       type: 'fund'
-//     },
-//   ];
-
-//   const getNewsIcon = (type, priority) => {
-//     if (priority === 'high') return <AlertTriangle className="w-3 h-3 text-red-500" />;
-//     if (type === 'market') return <BarChart3 className="w-3 h-3 text-blue-500" />;
-//     if (type === 'company') return <Star className="w-3 h-3 text-orange-500" />;
-//     return <Bell className="w-3 h-3 text-gray-500" />;
-//   };
-
-//   return (
-//     <div className="bg-white border-gray-200 flex flex-col h-full">
-//       {/* News Header */}
-//       <div className="bg-gradient-to-r from-red-600 to-red-400 text-white px-4 py-2 border-b border-red-300">
-//         <div className="flex items-center justify-between">
-//           <div className="flex items-center space-x-2">
-//             <Newspaper className="w-4 h-4" />
-//             <h3 className="text-sm font-semibold">News Flash</h3>
-//           </div>
-//           <Volume2 className="w-4 h-4" />
-//         </div>
-
-//         {/* News Tabs */}
-//         <div className="flex items-center space-x-3 mt-2">
-//           {['All', 'Announcements', 'News'].map((tab) => (
-//             <button
-//               key={tab}
-//               onClick={() => setActiveNewsTab(tab)}
-//               className={`px-2 py-1 text-xs rounded transition-all ${
-//                 activeNewsTab === tab
-//                   ? 'bg-white/20 text-white font-medium'
-//                   : 'text-red-100 hover:text-white hover:bg-white/10'
-//               }`}
-//             >
-//               {tab}
-//             </button>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* News Content */}
-//       <div className="flex-1 overflow-y-auto">
-//         <div className="divide-y divide-gray-100">
-//           {newsItems.map((news, idx) => (
-//             <div key={idx} className="px-4 py-3 hover:bg-red-50/50 transition-colors cursor-pointer">
-//               <div className="flex items-start space-x-2">
-//                 <div className="mt-1">
-//                   {getNewsIcon(news.type, news.priority)}
-//                 </div>
-//                 <div className="flex-1 min-w-0">
-//                   <div className="text-xs font-medium text-gray-900 line-clamp-2 mb-1">
-//                     {news.title}
-//                   </div>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-xs text-red-600 font-medium">{news.category}</span>
-//                     <span className="text-xs text-gray-500">{news.time}</span>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* News Footer */}
-
-//     </div>
-//   );
-// };
-
-// Main Market Overview Section Component
 const MarketOverviewSection = () => {
   return (
     <div className="bg-gray-100 mx-2 border-gray-300 ">

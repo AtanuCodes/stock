@@ -104,7 +104,7 @@ export default function News() {
     return (
       <div className="bg-card border border-gray-200 rounded flex flex-col h-full">
         {/* News Header */}
-        <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground px-3 py-1.5 rounded">
+        <div className="bg-gradient-to-tr from-red-600 to-gray-800/90 dark:from-black dark:to-neutral-800 text-white px-3 py-1.5 rounded">
  <div className="flex items-center justify-between">
            <span className='lg:hidden'>
              <p className='text-foreground'>News & Announcements</p>
@@ -129,8 +129,8 @@ export default function News() {
                 onClick={() => setActiveNewsTab(tab)}
                 className={`dark:bg-card px-3 py-1 text-xs rounded transition-all ${
                   activeNewsTab === tab
-                    ? 'bg-red-600/85 dark:bg-red-500 text-white font-medium'
-                    : 'text-gray-600 dark:text-gray-500  hover:text-white hover:bg-white/10'
+                    ? 'bg-white dark:bg-red-500 text-red-500 font-medium'
+                    : 'text-white/70 dark:text-gray-500  hover:text-white hover:bg-white/10'
                 }`}
               >
                 {tab}

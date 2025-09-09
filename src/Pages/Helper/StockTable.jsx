@@ -432,7 +432,7 @@ const MainStockTable = () => {
       {/* Header Section */}
       <div className="border-b border-gray-200">
         {/* Main Tabs */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-red-200/80 to-white
+        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-br from-red-600 to-gray-800/90 text-white 
          dark:from-black dark:to-neutral-800">
           <div className="flex items-center">
             {tabs.map((tab, index) => (
