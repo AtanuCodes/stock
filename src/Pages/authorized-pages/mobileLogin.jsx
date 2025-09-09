@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, TrendingUp, Shield, BarChart3 } from 'lucide-react';
 import logo1 from "../../assets/Group 47.png"
 import { useNavigate } from 'react-router-dom';
+import bg from "../../assets/bg.svg"
 
 const LoginInterface = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +31,7 @@ const LoginInterface = () => {
   return (
     <div className="h-screen bg-gradient-to-br from-gray-50 via-rose-50 to-gray-00 flex items-center justify-center px-4">
       {/* Subtle Background Pattern */}
-      <div className=""></div>
+      {/* <div className=""></div> */}
       
       <div className="relative w-full max-w-md">
         {/* Main Login Card */}
@@ -45,7 +46,7 @@ const LoginInterface = () => {
           {/* Greeting */}
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-2">{getCurrentGreeting()}!</h2>
-            <p className="text-gray-500 text-sm">Welcome back to your trading dashboard</p>
+            {/* <p className="text-gray-500 text-sm">Welcome back to your trading dashboard</p> */}
           </div>
 
           {/* Login Form */}
@@ -53,7 +54,7 @@ const LoginInterface = () => {
             {/* Username Field */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                Username or Email
+                Username
               </label>
               <div className="relative">
                 <input
@@ -135,12 +136,6 @@ const LoginInterface = () => {
        
         </div>
 
-        {/* Market Stats Decoration */}
-        {/* <div className="absolute -top-4 -right-4 bg-gradient-to-bl from-red-300 to-red-500 backdrop-blur-sm rounded-full p-3 border border-red-200">
-          <BarChart3 className="w-6 h-6   text-white" />
-        </div> */}
-
-        {/* Footer */}
         <div className="text-center mt-4 text-xs text-gray-500">
           <p>© 2025 I-Trade. All rights reserved.</p>
         </div>
