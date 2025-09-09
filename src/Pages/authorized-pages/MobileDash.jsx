@@ -4,6 +4,8 @@ import Chart from 'react-apexcharts';
 import BottomNavigation from './bottom';
 import News from "../Helper/News";
 import minilogo from "../../assets/minilogo.svg"
+import df from "../../assets/DFLOGO.svg";
+import Wlogo from "../../assets/white.svg";
 import SectionStockChart from "@/Pages/authorized-pages/mobile-dashboard/section-stock-chart.jsx";
 
 // Chart data for ApexCharts
@@ -55,21 +57,21 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
   return (
     <div className="min-h-screen  pb-16">
       {/* Header */}
-      <div className="bg-gray-50 px-2 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
+      <div className="bg-card px-2 py-3">
+        <div className="flex justify-between">
+          <div className="flex space-x-2">
             <button onClick={onMenuClick} className="p-1">
               <Menu className="w-6 h-6" />
             </button>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                 <img src={minilogo} alt="logo" className="w-full h-full" />
+         <div className="flex items-end space-x-2">
+              <div className="w-20">
+                 <img src={df} alt="logo" className="w-full h-full" />
               </div>
-              <span className="font-semibold text-lg">I-Trade</span>
+              {/* <span className="font-semibold text-lg">I-Trade</span> */}
             </div>
           </div>
           
-          <div className="flex items-center space-x-4 bg-gradient-to-br from-red-200/60 to-white px-4 rounded-lg">
+          <div className="flex items-start space-x-4 bg-gradient-to-br from-red-200/60 to-white px-4 rounded-lg">
             <div className="text-right">
               <div className="text-xs text-gray-600">Un. Gain</div>
               <div className=" text-sm">0.00%</div>
@@ -78,8 +80,11 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
               <div className="text-xs text-gray-600">BDT</div>
               <div className=" text-sm">0.00</div>
             </div>
-            <Search className="w-5 h-5" />
+           <div className='flex items-center justify-center mt-2'>
+             <Search className="w-5 h-5" />
+           </div>
           </div>
+             
         </div>
         
         {/* Animated News Ticker */}
@@ -91,7 +96,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           </div>
         </div>
       </div>
-   <div className="bg-white border-b border-gray-200">
+   <div className="bg-card border-b border-gray-200">
         <div className="flex">
           {['Market', 'Top Stocks', 'Indices'].map((tab) => (
             <button
@@ -109,28 +114,28 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         </div>
       </div>
       {/* Close Header - matching screenshot */}
-      <div className="bg-white px-4 py-2 border-b border-gray-100">
+      <div className="bg-card px-4 py-2 border-b border-gray-100">
         <div className="flex items-center justify-between">
           <div className="text-green-500 text-sm font-medium">Trading</div>
           <div className="flex items-center space-x-2">
             <span className="font-bold text-gray-800">DSE</span>
-            <ArrowUp className="w-4 h-4 text-gray-600" />
+            <ArrowUp className="w-4 h-4 text-foreground" />
           </div>
-          <div className="text-gray-600 text-sm">07-09-2025</div>
+          <div className="text-foreground text-sm">07-09-2025</div>
         </div>
       </div>
 
       {/* DSEX Section - exactly matching screenshot */}
-      <div className="bg-white px-4 py-3">
+      <div className="bg-card dark:text-white px-4 py-3">
         <div className="flex items-center justify-between mb-2">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-gray-800 text-lg">DSEX</span>
-              <span className="text-gray-500 text-sm">DSE Broad Index</span>
+              <span className="font-bold text-gray-800 dark:text-white text-lg">DSEX</span>
+              <span className="text-gray-500 dark:text-white text-sm">DSE Broad Index</span>
             </div>
           </div>
           <div className="text-right mr-2">
-            <div className="text-xs text-gray-500">Days Range</div>
+            <div className="text-xs text-gray-500 dark:text-white">Days Range</div>
             <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
           </div>
         </div>
@@ -139,45 +144,45 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           <div className="flex items-center space-x-3">
             <div className="flex items-center">
               <TrendingUp className="w-5 h-5 text-green-500 mr-1" />
-              <span className="text-3xl font-bold text-gray-800">5,636.15</span>
+              <span className="text-3xl font-bold text-gray-800 dark:text-white">5,636.15</span>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-xs text-gray-500">52 Wk Range</div>
+            <div className="text-xs text-gray-500 dark:text-white">52 Wk Range</div>
             <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="bg-green-500 text-white px-3 py-1 rounded text-sm font-bold">
+          <div className="bg-green-500 text-foreground px-3 py-1 rounded text-sm font-bold">
             0.39%
           </div>
-          <span className="text-xl font-bold text-gray-800">21.87</span>
+          <span className="text-xl font-bold text-foreground">21.87</span>
         </div>
       </div>
 
       {/* Chart Section - ApexCharts using same pattern as your example */}
-      <div className="bg-white px-2 py-2 border-t border-gray-100">
+      <div className="bg-card px-2 py-2 border-t border-gray-100">
 
         {/* Chart time labels - only showing 10:00 */}
         <div className="flex justify-start mt-1">
           <SectionStockChart/>
-          <span className="text-xs text-gray-500 ml-2">10:00</span>
+          <span className="text-xs text-gray-500 dark:text-white ml-2">10:00</span>
         </div>
       </div>
 
       {/* Statistics Section - matching screenshot layout */}
-      <div className="bg-white px-4 py-4 border-b border-t border-gray-100">
+      <div className="bg-card px-4 py-4 border-b border-t border-gray-100">
         <div className="grid grid-cols-5 gap-1">
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-800 mb-1">462</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">462</div>
             <div className="text-xs text-gray-500 mb-2">Total</div>
            
           </div>
            <div className="flex justify-center space-x-1 mt-1">
               <div className="w-2 h-8 bg-green-500 rounded-sm"></div>
               <div className="w-2 h-5 bg-red-500 rounded-sm"></div>
-              <div className="w-2 h-3 bg-gray-500 rounded-sm"></div>
+              <div className="w-2 h-3 bg-gray-500  rounded-sm"></div>
             </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600 mb-1">298</div>
@@ -190,7 +195,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           </div>
           
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-800 mb-1">20</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-gray-300 mb-1">20</div>
             <div className="text-xs text-gray-500">Unchanged</div>
           </div>
         </div>
@@ -200,7 +205,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
            <div>
              <div className="text-sm text-gray-500">Cash Map</div>
             <div className="flex items-center -mt-0.5">
-              <span className="text-lg font-bold text-gray-800 mr-2">54.18%</span>
+              <span className="text-lg font-bold text-gray-800 dark:text-white mr-2">54.18%</span>
               <div className="w-20 h-2 bg-red-500 rounded-full">
                 <div className="w-3/5 h-2  bg-green-600 rounded-full"></div>
               </div>

@@ -157,7 +157,7 @@ const TopGainers = () => {
   ];
 
   return (
-    <div className="bg-green-50 dark:bg-black  border-b border-gray-300">
+    <div className="bg-green-50 dark:bg-neutral-800  border-b border-gray-300">
       <div className="bg-gradient-to-r from-red-200/80 to-white dark:from-black dark:to-neutral-800 text-foreground border-b border-emerald-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold ">
