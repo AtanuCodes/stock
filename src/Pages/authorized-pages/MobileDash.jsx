@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, Search, TrendingUp, TrendingDown, ArrowUp } from 'lucide-react';
 import Chart from 'react-apexcharts';
 import BottomNavigation from './bottom';
-
+import News from "../Helper/News";
+import minilogo from "../../assets/minilogo.svg"
 // Chart data for ApexCharts
 const chartData = [
   5610, 5615, 5620, 5625, 5630, 5635, 5640, 5645, 5650, 5655, 5660, 5665,
@@ -195,9 +196,9 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
             </button>
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 text-teal-600" />
+                 <img src={minilogo} alt="logo" className="w-full h-full" />
               </div>
-              <span className="font-semibold text-lg">Trade Express</span>
+              <span className="font-semibold text-lg">I-Trade</span>
             </div>
           </div>
           
@@ -215,19 +216,35 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         </div>
         
         {/* Animated News Ticker */}
-        <div className="mt-2 h-5 overflow-hidden">
+        <div className="mt-2 ml-1 h-5 overflow-hidden">
           <div className={`text-sm text-blue-600 transition-all duration-300 ease-in-out transform ${
             newsVisible ? 'translate-y-0 opacity-90' : '-translate-y-5 opacity-0'
           }`}>
-            📈 {newsData[currentNewsIndex]}
+            📰 {newsData[currentNewsIndex]}
           </div>
         </div>
       </div>
-
+   <div className="bg-white border-b border-gray-200">
+        <div className="flex">
+          {['Market', 'Top Stocks', 'Indices'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 py-3 text-sm font-medium border-b-2 ${
+                activeTab === tab
+                  ? 'bg-gradient-to-tr from-red-200/70 to-white border-red-500 text-red-600'
+                  : 'border-transparent text-gray-500'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </div>
       {/* Close Header - matching screenshot */}
       <div className="bg-white px-4 py-2 border-b border-gray-100">
         <div className="flex items-center justify-between">
-          <div className="text-pink-500 text-sm font-medium">Close</div>
+          <div className="text-green-500 text-sm font-medium">Trading</div>
           <div className="flex items-center space-x-2">
             <span className="font-bold text-gray-800">DSE</span>
             <ArrowUp className="w-4 h-4 text-gray-600" />
@@ -271,7 +288,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
           <span className="text-xl font-bold text-gray-800">21.87</span>
         </div>
       </div>
-<hr/>
+
       {/* Chart Section - ApexCharts using same pattern as your example */}
       <div className="bg-white px-4 py-4 border-t border-gray-100">
         <div className="w-full h-24">
@@ -322,10 +339,10 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
  <div className='flex justify-between m-2'>
            <div>
              <div className="text-sm text-gray-500">Cash Map</div>
-            <div className="flex items-center mt-1">
+            <div className="flex items-center -mt-0.5">
               <span className="text-lg font-bold text-gray-800 mr-2">54.18%</span>
-              <div className="w-20 h-2 bg-gray-200 rounded-full">
-                <div className="w-3/5 h-2 bg-red-500 rounded-full"></div>
+              <div className="w-20 h-2 bg-red-500 rounded-full">
+                <div className="w-3/5 h-2  bg-green-600 rounded-full"></div>
               </div>
             </div>
            </div>
@@ -338,6 +355,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
 
       {/* Bottom Navigation */}
       <BottomNavigation />
+      <News/>
     </div>
   );
 };

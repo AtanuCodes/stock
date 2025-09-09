@@ -104,19 +104,25 @@ export default function News() {
     return (
       <div className="bg-white border border-gray-200 rounded flex flex-col h-full">
         {/* News Header */}
-        <div className="bg-gradient-to-r from-red-200/80 to-white text-white px-3 py-2 rounded">
+        <div className="bg-gradient-to-r from-red-200/80 to-white text-white px-3 py-1.5 rounded">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+           <span className='lg:hidden'>
+             <p className='text-gray-700'>News & Announcements</p>
+           </span>
+           <div className='hidden lg:block'>
+ <div className="flex items-center space-x-2">
               <div className="border px-2 py-1 rounded border-gray-300 text-gray-600">
                 <MicVocal className="w-4 h-4" />
               </div>
               {/* <span className="text-sm font-semibold">News Flash</span> */}
             </div>
+           </div>
         
           </div>
           
-          {/* News Tabs */}
-          <div className="flex items-center space-x-1 mt-3">
+       
+       <div className='hidden lg:block'>
+<div className="flex items-center space-x-1 mt-3 ">
             {['All', 'Announcements', 'News'].map((tab) => (
               <button
                 key={tab}
@@ -131,6 +137,9 @@ export default function News() {
               </button>
             ))}
           </div>
+       </div>
+          {/* News Tabs */}
+          
         </div>
 
         {/* News Content */}
