@@ -49,7 +49,7 @@ const BottomNavigation = ({ activeTab = 'market', onTabChange }) => {
               onClick={() => handleTabClick(item.id)}
               className={`flex flex-col items-center py-1.5 px-1 transition-all duration-200 rounded-lg mx-1 overflow-hidden ${
                 isActive
-                  ? 'bg-gradient-to-t from-red-200/70 to-transparent text-red-600 font-semibold'
+                  ? ' text-red-600 font-semibold'
                   : 'border-transparent text-gray-500 hover:text-red-600 hover:bg-gray-50'
               }`}
             >

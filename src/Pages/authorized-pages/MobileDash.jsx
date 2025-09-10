@@ -1,38 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, Search, TrendingUp, TrendingDown, ArrowUp } from 'lucide-react';
-import Chart from 'react-apexcharts';
-import BottomNavigation from './bottom';
+import React, { useState, useEffect } from "react";
+import { Menu, Search, TrendingUp, TrendingDown, ArrowUp } from "lucide-react";
+import Chart from "react-apexcharts";
+import BottomNavigation from "./bottom";
 import News from "../Helper/News";
-import minilogo from "../../assets/minilogo.svg"
+import minilogo from "../../assets/minilogo.svg";
 import df from "../../assets/DFLOGO.svg";
 import Wlogo from "../../assets/white.svg";
 import SectionStockChart from "@/Pages/authorized-pages/mobile-dashboard/section-stock-chart.jsx";
-
+import { ChevronDown } from "lucide-react";
 // Chart data for ApexCharts
 const chartData = [
-  5610, 5615, 5620, 5625, 5630, 5635, 5640, 5645, 5650, 5655, 5660, 5665,
-  5670, 5675, 5680, 5678, 5676, 5674, 5672, 5670, 5668, 5665, 5660, 5655,
-  5650, 5645, 5640, 5638, 5636.15
+  5610, 5615, 5620, 5625, 5630, 5635, 5640, 5645, 5650, 5655, 5660, 5665, 5670,
+  5675, 5680, 5678, 5676, 5674, 5672, 5670, 5668, 5665, 5660, 5655, 5650, 5645,
+  5640, 5638, 5636.15,
 ];
 
 const chartCategories = [
-  '10:00', '10:05', '10:10', '10:15', '10:20', '10:25', '10:30', '10:35', '10:40', '10:45',
-  '10:50', '10:55', '11:00', '11:05', '11:10', '11:15', '11:20', '11:25', '11:30', '11:35',
-  '11:40', '11:45', '11:50', '11:55', '12:00', '12:05', '12:10', '12:15', '12:20'
+  "10:00",
+  "10:05",
+  "10:10",
+  "10:15",
+  "10:20",
+  "10:25",
+  "10:30",
+  "10:35",
+  "10:40",
+  "10:45",
+  "10:50",
+  "10:55",
+  "11:00",
+  "11:05",
+  "11:10",
+  "11:15",
+  "11:20",
+  "11:25",
+  "11:30",
+  "11:35",
+  "11:40",
+  "11:45",
+  "11:50",
+  "11:55",
+  "12:00",
+  "12:05",
+  "12:10",
+  "12:15",
+  "12:20",
 ];
 
 // News data for ticker
 const newsData = [
   "BEXIMCO: Board declared 10% cash dividend",
-  "GRAMEENPHONE: Q3 revenue up 8.5% YoY", 
+  "GRAMEENPHONE: Q3 revenue up 8.5% YoY",
   "BRAC BANK: Announces rights issue 1:4 ratio",
   "SQUARE PHARMA: FDA approval for new drug",
-  "WALTON: Export earnings increased 15%"
+  "WALTON: Export earnings increased 15%",
 ];
 
-
 const MobileTradingDashboard = ({ onMenuClick }) => {
-  const [activeTab, setActiveTab] = useState('Market');
+  const [activeTab, setActiveTab] = useState("Market");
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [newsVisible, setNewsVisible] = useState(true);
 
@@ -41,7 +66,7 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
     const interval = setInterval(() => {
       setNewsVisible(false);
       setTimeout(() => {
-        setCurrentNewsIndex((prevIndex) => 
+        setCurrentNewsIndex((prevIndex) =>
           prevIndex === newsData.length - 1 ? 0 : prevIndex + 1
         );
         setNewsVisible(true);
@@ -53,6 +78,28 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
 
   // ApexChart options
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const body = document.body;
+    if (isDarkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const handleThemeToggle = () => {
+    setIsDarkMode((prev) => !prev);
+    localStorage.setItem("isDarkMode", !isDarkMode);
+  };
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("isDarkMode");
+    if (storedTheme) {
+      setIsDarkMode(storedTheme === "true");
+    }
+  }, []);
 
   return (
     <div className="min-h-screen  pb-16">
@@ -63,49 +110,52 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
             <button onClick={onMenuClick} className="p-1">
               <Menu className="w-6 h-6" />
             </button>
-         <div className="flex items-end space-x-2">
+            <div className="flex items-end space-x-2">
               <div className="w-20">
-                 <img src={df} alt="logo" className="w-full h-full" />
+                <img src={df} className="w-full h-full" alt="Logo" />
               </div>
               {/* <span className="font-semibold text-lg">I-Trade</span> */}
             </div>
           </div>
-          
-          <div className="flex items-start space-x-4 bg-gradient-to-br from-red-200/60 to-white px-4 rounded-lg">
+
+          <div className="flex items-start space-x-4 border border-gray-200/75 px-4 rounded-lg">
             <div className="text-right">
-              <div className="text-xs text-gray-600">Un. Gain</div>
+              <div className="text-xs text-foreground">Un. Gain</div>
               <div className=" text-sm">0.00%</div>
             </div>
             <div className="text-right">
-              <div className="text-xs text-gray-600">BDT</div>
+              <div className="text-xs text-foreground">BDT</div>
               <div className=" text-sm">0.00</div>
             </div>
-           <div className='flex items-center justify-center mt-2'>
-             <Search className="w-5 h-5" />
-           </div>
+            <div className="flex items-center justify-center mt-2">
+              <Search className="w-5 h-5" />
+            </div>
           </div>
-             
         </div>
-        
+
         {/* Animated News Ticker */}
         <div className="mt-2 ml-1 h-5 overflow-hidden">
-          <div className={`text-sm text-blue-600 transition-all duration-300 ease-in-out transform ${
-            newsVisible ? 'translate-y-0 opacity-90' : '-translate-y-5 opacity-0'
-          }`}>
+          <div
+            className={`text-sm text-blue-600 transition-all duration-300 ease-in-out transform ${
+              newsVisible
+                ? "translate-y-0 opacity-90"
+                : "-translate-y-5 opacity-0"
+            }`}
+          >
             📰 {newsData[currentNewsIndex]}
           </div>
         </div>
       </div>
-   <div className="bg-card border-b border-gray-200">
+      <div className="bg-card">
         <div className="flex">
-          {['Market', 'Top Stocks', 'Indices'].map((tab) => (
+          {["Market", "Top Stocks", "Indices"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`flex-1 py-3 text-sm font-medium border-b-2 ${
                 activeTab === tab
-                  ? 'bg-gradient-to-tr from-red-200/70 to-white border-red-500 text-red-600'
-                  : 'border-transparent text-gray-500'
+                  ? "bg-gradient-to-b from-red-200/70 to-transparent border-gray-500/85 text-foreground"
+                  : "border-transparent text-gray-500"
               }`}
             >
               {tab}
@@ -114,60 +164,80 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
         </div>
       </div>
       {/* Close Header - matching screenshot */}
-      <div className="bg-card px-4 py-2 border-b border-gray-100">
-        <div className="flex items-center justify-between">
-          <div className="text-green-500 text-sm font-medium">Trading</div>
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-gray-800">DSE</span>
-            <ArrowUp className="w-4 h-4 text-foreground" />
-          </div>
-          <div className="text-foreground text-sm">07-09-2025</div>
-        </div>
-      </div>
-
-      {/* DSEX Section - exactly matching screenshot */}
-      <div className="bg-card dark:text-white px-4 py-3">
-        <div className="flex items-center justify-between mb-2">
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-gray-800 dark:text-white text-lg">DSEX</span>
-              <span className="text-gray-500 dark:text-white text-sm">DSE Broad Index</span>
+      <div className="bg-white border border-gray-200 rounded-lg shadow-sm max-w-md mx-auto">
+        {/* Header */}
+        <div className="bg-white px-4 py-2 border-b border-gray-100">
+          <div className="flex items-center justify-between">
+            <div className="text-red-600 text-base font-medium ">Close</div>
+            <div className="flex items-center space-x-1">
+              <span className="font-bold text-gray-800">DSE</span>
+              <ChevronDown className="w-4 h-4 text-gray-600" />
             </div>
-          </div>
-          <div className="text-right mr-2">
-            <div className="text-xs text-gray-500 dark:text-white">Days Range</div>
-            <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
+            <div className="text-gray-600 text-sm">07-09-2025</div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-3">
+        {/* DSEX Section */}
+        <div className="bg-white px-4 py-3">
+          <div className="flex items-center space-x-3 mb-1">
+            <span className="font-bold text-gray-800 text-xl">DSEX</span>
+            <span className="text-gray-500 text-sm mt-1">
+              Dhaka (DSEX) Index
+            </span>
+          </div>
+          <hr className="text-gray-200 border border-slate-200/75" />
+         <div className="flex items-center justify-between mt-2">
+<div className="flex flex-col gap-2 mt-1">
+           <div className="flex">
+            <TrendingUp className="w-7 h-7 text-green-600 mr-2 mt-1" />
+            <span className="text-3xl font-bold text-green-600">5,636.15</span>
+          </div>
           <div className="flex items-center space-x-3">
-            <div className="flex items-center">
-              <TrendingUp className="w-5 h-5 text-green-500 mr-1" />
-              <span className="text-3xl font-bold text-gray-800 dark:text-white">5,636.15</span>
+            <div className="bg-green-600 text-white px-2 py-1 rounded text-sm font-medium">
+              0.39%
+            </div>
+            <span className="text-xl font-semibold text-green-600">21.87</span>
+          </div>
+         </div>
+         <div>
+          
+         </div>
+         <div className="mt-1">
+           <div className="flex items-start justify-between mb-3">
+            <div></div>
+            <div className="text-start">
+              <div className="text-xs text-gray-500 mb-2">Days Range</div>
+              <div className="w-24 h-1 bg-gray-300 relative rounded-full">
+                {/* Green marker */}
+                <div className="absolute left-1/2 -translate-x-1/2 -top-1 h-3 w-2 bg-green-600 "></div>
+              </div>
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-xs text-gray-500 dark:text-white">52 Wk Range</div>
-            <div className="w-8 h-1 bg-red-500 rounded mt-1"></div>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center"></div>
+            <div className="text-start">
+              <div className="text-xs text-gray-500 mb-2">52 Wk Range</div>
+              <div className="w-24 h-1 bg-gray-300 relative rounded-full">
+                {/* Red marker */}
+                <div className="absolute left-0 -top-1 h-3 w-2 bg-red-600 "></div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <div className="bg-green-500 text-foreground px-3 py-1 rounded text-sm font-bold">
-            0.39%
-          </div>
-          <span className="text-xl font-bold text-foreground">21.87</span>
+         </div>
+         </div>
+         
+         
         </div>
       </div>
 
       {/* Chart Section - ApexCharts using same pattern as your example */}
       <div className="bg-card px-2 py-2 border-t border-gray-100">
-
         {/* Chart time labels - only showing 10:00 */}
         <div className="flex justify-start mt-1">
-          <SectionStockChart/>
-          <span className="text-xs text-gray-500 dark:text-white ml-2">10:00</span>
+          <SectionStockChart />
+          <span className="text-xs text-gray-500 dark:text-white ml-2">
+            10:00
+          </span>
         </div>
       </div>
 
@@ -175,52 +245,57 @@ const MobileTradingDashboard = ({ onMenuClick }) => {
       <div className="bg-card px-4 py-4 border-b border-t border-gray-100">
         <div className="grid grid-cols-5 gap-1">
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">462</div>
-            <div className="text-xs text-gray-500 mb-2">Total</div>
-           
-          </div>
-           <div className="flex justify-center space-x-1 mt-1">
-              <div className="w-2 h-8 bg-green-500 rounded-sm"></div>
-              <div className="w-2 h-5 bg-red-500 rounded-sm"></div>
-              <div className="w-2 h-3 bg-gray-500  rounded-sm"></div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white mb-1">
+              462
             </div>
+            <div className="text-xs text-gray-500 mb-2">Total</div>
+          </div>
+          <div className="flex justify-center space-x-1 mt-1">
+            <div className="w-2 h-8 bg-green-500 rounded-sm"></div>
+            <div className="w-2 h-5 bg-red-500 rounded-sm"></div>
+            <div className="w-2 h-3 bg-gray-500  rounded-sm"></div>
+          </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600 mb-1">298</div>
             <div className="text-xs text-gray-500">Up</div>
           </div>
-          
+
           <div className="text-center">
             <div className="text-2xl font-bold text-red-600 mb-1">144</div>
             <div className="text-xs text-gray-500">Down</div>
           </div>
-          
+
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-800 dark:text-gray-300 mb-1">20</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-gray-300 mb-1">
+              20
+            </div>
             <div className="text-xs text-gray-500">Unchanged</div>
           </div>
         </div>
       </div>
 
- <div className='flex justify-between m-2'>
-           <div>
-             <div className="text-sm text-gray-500">Cash Map</div>
-            <div className="flex items-center -mt-0.5">
-              <span className="text-lg font-bold text-gray-800 dark:text-white mr-2">54.18%</span>
-              <div className="w-20 h-2 bg-red-500 rounded-full">
-                <div className="w-3/5 h-2  bg-green-600 rounded-full"></div>
-              </div>
+      <div className="flex justify-between m-2">
+        <div>
+          <div className="text-sm text-gray-500">Cash Map</div>
+          <div className="flex items-center -mt-0.5">
+            <span className="text-lg font-bold text-gray-800 dark:text-white mr-2">
+              54.18%
+            </span>
+            <div className="w-20 h-2 bg-red-500 rounded-full">
+              <div className="w-3/5 h-2  bg-green-600 rounded-full"></div>
             </div>
-           </div>
-         
-          <div className="text-right">
-            <div className="text-sm text-gray-500">Net Cash%</div>
-            <div className="text-lg font-bold text-green-500">8.36%</div>
           </div>
         </div>
 
+        <div className="text-right">
+          <div className="text-sm text-gray-500">Net Cash%</div>
+          <div className="text-lg font-bold text-green-500">8.36%</div>
+        </div>
+      </div>
+
       {/* Bottom Navigation */}
       <BottomNavigation />
-      <News/>
+      <News />
     </div>
   );
 };

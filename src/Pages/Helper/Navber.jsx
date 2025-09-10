@@ -122,7 +122,7 @@ const TickerRibbon = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-card text-foreground border-b border-red-100 dark:border-none overflow-hidden w-[1200px]">
+    <div className="flex flex-col bg-card dark:bg-gray-700 text-foreground border-b border-red-100 dark:border-none overflow-hidden w-[1425px]">
       <div className="whitespace-nowrap animate-marquee flex items-center space-x-6 py-1.5 px-3 mb-2">
         {tickerData.concat(tickerData).map((item, index) => (
           <div
@@ -243,14 +243,14 @@ const Header = () => {
 
             <div className="flex justify-between text-xs text-foreground">
               <div className="flex justify-end items-end space-y-2">
-                <div className="bg-card p-2 shadow-sm rounded-lg border-r flex space-x-6 border-gray-300 dark:border dark:border-gray-100">
+                <div className="bg-card px-6 py-3 shadow-sm rounded-lg border flex space-x-6 border-gray-300 dark:border dark:border-gray-100">
                   <div className="text-center">
-                    <CircularProgress percentage={46.97} color="#10b981" />
-                    <div className="text-xs text-foreground">Cash Map %</div>
+                    <CircularProgress percentage={40} color="#10b981" />
+                    <div className="text-xs text-foreground -ml-3">Cash Map %</div>
                   </div>
                   <div className="text-center">
-                    <CircularProgress percentage={6.05} color="#ef4444" />
-                    <div className="text-xs text-foreground">Net Cash %</div>
+                    <CircularProgress percentage={6} color="#ef4444" />
+                    <div className="text-xs text-foreground -ml-3">Net Cash %</div>
                   </div>
                 </div>
               </div>

@@ -22,7 +22,7 @@ import {
   Moon
 } from 'lucide-react';
 import logo from "../../assets/DFLOGO.svg";
-
+import Wlogo from "../../assets/white.svg"
 const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
   // 🌙 Theme state
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -116,11 +116,12 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
       }`}>
         
         {/* Header - Fixed */}
-        <div className="bg-gradient-to-tl from-red-200/70 to-white dark:from-neutral-900 dark:to-black border-b border-border text-gray-700 dark:text-gray-200 px-4 py-4 shadow-lg">
+        <div className="bg-gradient-to-b from-red-200/80 to-white dark:from-neutral-900
+         dark:to-black border-b border-gray-300 text-gray-700 dark:text-gray-200 px-4 py-4 shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-2">
               <div className="w-20">
-                <img src={logo} alt="logo" className="w-full h-full" />
+              <img  src={isDarkMode ? Wlogo : logo} className="w-full h-full" alt="Logo" />
               </div>
               {/* <span className="font-bold text-lg">I-Trade</span> */}
             </div>
@@ -143,7 +144,8 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
           
           {/* User Info with Last Login */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-white/85 dark:bg-neutral-800 rounded-full flex items-center justify-center backdrop-blur-sm">
+            <div className="w-12 h-12 bg-white dark:bg-neutral-800 rounded-full
+             flex items-center justify-center backdrop-blur-sm">
               <User className="w-6 h-6" />
             </div>
             <div className="flex-1">
@@ -174,24 +176,24 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
                   {section.items.map((item, itemIndex) => (
                     <button
                       key={itemIndex}
-                      className={`w-full flex items-center px-4 py-4 text-left hover:bg-gray-50 dark:hover:bg-neutral-900 transition-all duration-200 group ${
+                      className={`w-full flex items-center px-4 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-neutral-900 transition-all duration-200 group ${
                         item.active 
-                          ? 'bg-gradient-to-r from-rose-50 to-white dark:from-rose-900/30 dark:to-black border-r-4 border-rose-500 shadow-sm' 
+                          ? 'bg-gray-300/75 dark:bg-gray-200 border-r-4 border-gray-500 shadow-sm' 
                           : 'hover:shadow-sm'
                       } ${
-                        item.danger ? 'hover:bg-red-50 dark:hover:bg-red-900/30' : ''
+                        item.danger ? 'hover:bg-gray-50 dark:hover:bg-gray-900/30' : ''
                       }`}
                     >
                       <item.icon className={`w-5 h-5 mr-4 transition-colors ${
                         item.active 
-                          ? 'text-rose-600 dark:text-rose-400' 
+                          ? 'text-black' 
                           : item.danger 
                             ? 'text-red-500 group-hover:text-red-600 dark:group-hover:text-red-400' 
-                            : 'text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-200'
+                            : 'text-gray-500 group-hover:text-gray-700 dark:text-gray-400  dark:group-hover:text-gray-200'
                       }`} />
-                      <span className={`font-medium transition-colors ${
+                      <span className={`transition-colors ${
                         item.active 
-                          ? 'text-rose-700 dark:text-rose-300' 
+                          ? 'text-gray-700 dark:text-white font-semibold' 
                           : item.danger 
                             ? 'text-red-600 group-hover:text-red-700 dark:text-red-400 dark:group-hover:text-red-300' 
                             : 'text-gray-700 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white'
@@ -200,9 +202,9 @@ const DrawerMenu = ({ isOpen, onClose, userName = "TARUN KANTI ROY" }) => {
                       </span>
                       
                       {/* Active indicator */}
-                      {item.active && (
+                      {/* {item.active && (
                         <div className="ml-auto w-2 h-2 bg-rose-500 rounded-full"></div>
-                      )}
+                      )} */}
                     </button>
                   ))}
                 </div>

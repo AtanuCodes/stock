@@ -95,7 +95,7 @@ const StockActionModal = ({ isOpen, onClose, stock }) => {
         className="bg-white dark:bg-black/90 dark:text-foreground rounded-lg shadow-xl border border-gray-200 min-w-[280px] mt-20 ml-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-r from-red-500 to-red-700 text-foreground px-4 py-3 rounded-t-lg">
+        <div className="bg-gradient-to-r from-red-500 to-red-700 text-white  px-4 py-3 rounded-t-lg">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-semibold text-lg">{stock.symbol}</h3>
@@ -432,14 +432,14 @@ const MainStockTable = () => {
       {/* Header Section */}
       <div className="border-b border-gray-200">
         {/* Main Tabs */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-br from-red-600 to-gray-800/90 text-white 
-         dark:from-black dark:to-neutral-800">
+        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-gray-200/85 via-rose-50 to-red-200 border-b border-gray-300 text-foreground 
+         dark:from-gray-800 dark:to-gray-500">
           <div className="flex items-center">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 className={`px-3 py-1 text-xs font-medium rounded transition-all ${
-                  index === 1 ? "bg-red-600/85 dark:bg-red-500 text-white shadow" : ""
+                  index === 1 ? "bg-slate-500/80 dark:bg-gray-100 text-card shadow" : ""
                 }`}
               >
                 {tab}
@@ -469,7 +469,8 @@ const MainStockTable = () => {
                 onClick={() => setActiveTab(subTab)}
                 className={`px-2 py-1 text-xs rounded transition-all bg-card border border-gray-300 dark:border-none ${
                   activeTab === subTab
-                    ?"bg-red-600/85 dark:bg-red-500 text-white"
+
+                    ?"bg-slate-500/80 dark:bg-gray-100 text-card"
                     : "text-foreground hover:text-gray-800 hover:bg-gray-100 "
                 }`}
               >

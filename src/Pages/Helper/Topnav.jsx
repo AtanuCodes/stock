@@ -37,7 +37,7 @@ export default function Topnav() {
   }, []);
 
   return (
-    <div className="px-4 py-2 flex items-center justify-between bg-card text-foreground">
+    <div className="px-4 py-2 flex items-center justify-between bg-card dark:bg-gray-700 text-foreground">
       {/* Left Section - Logo and Search */}
       <div className="flex items-center space-x-6">
         {/* Logo */}
@@ -59,6 +59,10 @@ export default function Topnav() {
 
       {/* Center Section - Account Info */}
       <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-2 px-3 py-1 rounded border border-red-100 dark:border-gray-100">
+          <span className="text-sm">MD. ABDUL LOTIF</span>
+          
+        </div>
         {/* Account Dropdown */}
         <div className="flex items-center space-x-2 px-3 py-1 rounded border border-red-100 dark:border-gray-100">
           <span className="text-sm">D00908-CSE</span>

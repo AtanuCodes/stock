@@ -29,7 +29,7 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-red-600 to-gray-800/90 dark:from-black dark:to-neutral-800 text-foreground px-4 py-2 border-b border-red-200 ">
+    <div className="bg-gradient-to-r from-gray-200/85 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-2 border-b border-red-200">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
@@ -37,8 +37,8 @@ const NavigationTabs = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-3 py-1.5 text-sm transition-all duration-200 rounded ${
               activeTab === tab
-                ? "bg-white/70 dark:bg-card text-red-500 dark:text-foreground font-bold border-b-2 border-red-500"
-                : "text-white dark:text-gray-400 hover:text-black hover:bg-white/50"
+                ? "bg-slate-500/80 dark:bg-gray-100 text-white dark:text-black "
+                : "text-foreground dark:text-gray-300 hover:text-black hover:bg-white/50"
             }`}
           >
             {tab}
@@ -87,40 +87,38 @@ const IndexOverview = () => {
   ];
 
   return (
-    <div className="bg-card text-foreground border-b border-gray-300">
+    <div className="text-foreground border border-gray-300 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold ">
-            Index Overview - DSE
-          </h3>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-red-500">Volume</span>
-            <ChevronDown className="w-3 h-3 text-red-600" />
+          <h3 className="text-sm font-semibold">Index Overview - DSE</h3>
+          <div className="flex items-center space-x-2 text-red-600 font-semibold dark:text-foreground">
+            <span className="text-xs">Volume</span>
+            <ChevronDown className="w-3 h-3" />
           </div>
         </div>
       </div>
 
       {/* Index List */}
-      <div className="divide-y divide-gray-100">
+      <div>
         {indexData.map((index, idx) => (
           <div
             key={idx}
-            className="px-4 py-3 hover:bg-gray-50 transition-colors"
+            className={`px-4 py-3 hover:bg-gray-100 transition-colors ${
+              idx % 2 === 1
+                ? "bg-gray-100 dark:bg-gray-700"
+                : "bg-gray-50 dark:bg-gray-800"
+            }`}
           >
             <div className="flex items-center justify-between">
               <div className="flex">
-                <div className="text-xs font-semibold">
-                  {index.name}
-                </div>
-                <div className="text-xs text-gray-500 dark:text-gay-200 ml-1">
+                <div className="text-xs font-semibold">{index.name}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-200 ml-1">
                   {index.fullName}
                 </div>
               </div>
               <div className="flex gap-2 text-right">
-                <div className="text-xs font-bold ">
-                  {index.value}
-                </div>
+                <div className="text-xs font-bold">{index.value}</div>
                 <div className="flex items-center space-x-1">
                   {index.color === "green" ? (
                     <ArrowUp className="w-3 h-3 text-emerald-500" />
@@ -147,6 +145,7 @@ const IndexOverview = () => {
   );
 };
 
+
 // Top Gainers Component
 const TopGainers = () => {
   const gainers = [
@@ -156,33 +155,31 @@ const TopGainers = () => {
     { symbol: "KDSALTDFB", price: "50.90", change: "9.94%" },
   ];
 
-  return (
-    <div className="bg-green-50 dark:bg-neutral-800  border-b border-gray-300">
-      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-emerald-200 px-4 py-2">
+ return (
+    <div className="bg-green-50 dark:bg-[#212931] border-b border-gray-300 overflow-hidden">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-green-700 dark:to-gray-800 text-foreground border-b border-emerald-200 px-4 py-2">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold ">
-            Top Gainers
-          </h3>
-          <TrendingUp className="w-4 h-4 text-emerald-500" />
+          <h3 className="text-sm font-semibold">Top Gainers</h3>
+          <TrendingUp className="w-4 h-4 text-emerald-600" />
         </div>
       </div>
 
-      <div className="divide-y divide-gray-100">
+      {/* List */}
+      <div>
         {gainers.map((stock, idx) => (
           <div
             key={idx}
-            className="px-4 py-3 hover:bg-emerald-50/50 transition-colors"
+            className={`px-4 py-3 transition-colors ${
+              idx % 2 === 0
+                ? "bg-green-50 dark:bg-green-900/30 hover:bg-green-100/60"
+                : "bg-green-100/75 dark:bg-green-800/40 hover:bg-green-200/50"
+            }`}
           >
             <div className="flex items-center justify-between">
-              <div className="flex">
-                <div className="text-xs font-semibold ">
-                  {stock.symbol}
-                </div>
-              </div>
+              <div className="text-xs font-semibold">{stock.symbol}</div>
               <div className="flex text-right gap-1">
-                <div className="text-xs font-bold ">
-                  {stock.price}
-                </div>
+                <div className="text-xs font-bold">{stock.price}</div>
                 <div className="flex items-center space-x-1">
                   <ArrowUp className="w-3 h-3 text-emerald-500" />
                   <span className="text-xs font-medium text-emerald-600">
@@ -197,7 +194,6 @@ const TopGainers = () => {
     </div>
   );
 };
-
 // Top Losers Component
 const TopLosers = () => {
   const losers = [
@@ -207,44 +203,47 @@ const TopLosers = () => {
     { symbol: "NRTECHFB", price: "42.80", change: "-5.52%" },
   ];
 
-  return (
-    <div className="bg-red-50 dark:bg-black text-foreground border-b border-gray-300">
-      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90 dark:from-black dark:to-neutral-800 text-foreground border-b border-red-200 px-4 py-2">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold ">Top Losers</h3>
-          <TrendingDown className="w-4 h-4 text-red-500" />
-        </div>
+ return (
+  <div className="bg-rose-50 dark:bg-[#212931] text-foreground border-b border-gray-300 overflow-hidden">
+    {/* Header */}
+    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-red-700 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-semibold">Top Losers</h3>
+        <TrendingDown className="w-4 h-4 text-red-500" />
       </div>
+    </div>
 
-      <div className="divide-y divide-gray-100">
-        {losers.map((stock, idx) => (
-          <div
-            key={idx}
-            className="px-4 py-3 hover:bg-red-50/50 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs font-semibold ">
-                  {stock.symbol}
-                </div>
-              </div>
-              <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold ">
-                  {stock.price}
-                </div>
-                <div className="flex items-center space-x-1">
-                  <ArrowDown className="w-3 h-3 text-red-500" />
-                  <span className="text-xs font-medium text-red-600">
-                    {stock.change}
-                  </span>
-                </div>
+    {/* List */}
+    <div>
+      {losers.map((stock, idx) => (
+        <div
+          key={idx}
+          className={`px-4 py-3 transition-colors ${
+            idx % 2 === 0
+              ? "bg-rose-50 dark:bg-red-900/30 hover:bg-rose-100/60"
+              : "bg-rose-100/80 dark:bg-red-800/40 hover:bg-rose-200/50"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-xs font-semibold">{stock.symbol}</div>
+            </div>
+            <div className="flex gap-1 text-right">
+              <div className="text-xs font-bold">{stock.price}</div>
+              <div className="flex items-center space-x-1">
+                <ArrowDown className="w-3 h-3 text-red-500" />
+                <span className="text-xs font-medium text-red-600">
+                  {stock.change}
+                </span>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
+
 };
 
 // Most Active Component
@@ -256,41 +255,39 @@ const MostActive = () => {
     { symbol: "DOMINAGE FB", price: "20.60", volume: "6.55 M" },
   ];
 
-  return (
-    <div className="bg-blue-50 dark:bg-black border-b border-gray-300">
-      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90  dark:from-black dark:to-neutral-800 text-foreground border-b border-blue-200 px-4 py-2">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold ">Most Active</h3>
-          <Activity className="w-4 h-4 text-blue-500" />
-        </div>
-      </div>
-
-      <div className="divide-y divide-gray-100">
-        {activeStocks.map((stock, idx) => (
-          <div
-            key={idx}
-            className="px-4 py-3 hover:bg-blue-50/50 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs font-semibold ">
-                  {stock.symbol}
-                </div>
-              </div>
-              <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold ">
-                  {stock.price}
-                </div>
-                <div className="text-xs text-blue-600 font-medium">
-                  {stock.volume}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+ return (
+  <div className="bg-blue-50 dark:bg-[#212931] border-b border-gray-300">
+    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-blue-200 px-4 py-2">
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-semibold">Most Active</h3>
+        <Activity className="w-4 h-4 text-blue-500" />
       </div>
     </div>
-  );
+
+    <div className="divide-y divide-gray-100">
+      {activeStocks.map((stock, idx) => (
+        <div
+          key={idx}
+          className={`px-4 py-3 transition-colors ${
+            idx % 2 === 0
+              ? "bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100/60"
+              : "bg-blue-100/60 dark:bg-blue-800/40 hover:bg-blue-200/50"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-xs font-semibold">{stock.symbol}</div>
+            </div>
+            <div className="flex gap-1 text-right">
+              <div className="text-xs font-bold">{stock.price}</div>
+              <div className="text-xs text-blue-600 font-medium">{stock.volume}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 };
 
 // XCHG Index Overview Component
@@ -331,63 +328,61 @@ const XCHGIndexOverview = () => {
   ];
 
   return (
-    <div className="bg-card text-foreground border-b border-gray-300 mx-2">
-      <div className="bg-gradient-to-br from-rose-50 to-slate-300/90  dark:from-black dark:to-neutral-800 text-foreground border-b border-purple-200 px-4 py-2">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold ">
-            Index Overview - XCHG
-          </h3>
-          <div className="flex items-center space-x-2">
-            <span className="text-xs text-red-500">Volume</span>
-            <ChevronDown className="w-3 h-3 text-red-600" />
-          </div>
+  <div className="bg-card text-foreground border-b border-gray-300 mx-2">
+    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-purple-200 px-4 py-2">
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-semibold">Index Overview - XCHG</h3>
+        <div className="flex items-center space-x-2 text-red-600 font-semibold dark:text-foreground">
+          <span className="text-xs">Volume</span>
+          <ChevronDown className="w-3 h-3" />
         </div>
       </div>
+    </div>
 
-      <div className="divide-y divide-gray-100">
-        {xchgData.map((index, idx) => (
-          <div
-            key={idx}
-            className="px-4 py-3 hover:bg-purple-50/50 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex">
-                <div className="text-xs font-semibold">
-                  {index.name}
-                </div>
-              </div>
-              <div className="flex gap-1 text-right">
-                <div className="text-xs font-bold ">
-                  {index.value}
-                </div>
-                <div className="flex items-center space-x-1">
-                  {index.changePercent > 0 ? (
-                    <ArrowUp className="w-3 h-3 text-emerald-500" />
-                  ) : index.changePercent < 0 ? (
-                    <ArrowDown className="w-3 h-3 text-red-500" />
-                  ) : (
-                    <Minus className="w-3 h-3 text-gray-400" />
-                  )}
-                  <span
-                    className={`text-xs font-medium ${
-                      index.changePercent > 0
-                        ? "text-emerald-600"
-                        : index.changePercent < 0
-                        ? "text-red-600"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {index.changePercent > 0 ? "+" : ""}
-                    {index.changePercent.toFixed(2)}%
-                  </span>
-                </div>
+    <div>
+      {xchgData.map((index, idx) => (
+        <div
+          key={idx}
+          className={`px-4 py-3 hover:bg-gray-100 transition-colors ${
+            idx % 2 === 0
+              ? "bg-gray-0 dark:bg-gray-800"
+              : "bg-gray-100 dark:bg-gray-700"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex">
+              <div className="text-xs font-semibold">{index.name}</div>
+            </div>
+            <div className="flex gap-1 text-right">
+              <div className="text-xs font-bold">{index.value}</div>
+              <div className="flex items-center space-x-1">
+                {index.changePercent > 0 ? (
+                  <ArrowUp className="w-3 h-3 text-emerald-500" />
+                ) : index.changePercent < 0 ? (
+                  <ArrowDown className="w-3 h-3 text-red-500" />
+                ) : (
+                  <Minus className="w-3 h-3 text-gray-400" />
+                )}
+                <span
+                  className={`text-xs font-medium ${
+                    index.changePercent > 0
+                      ? "text-emerald-600"
+                      : index.changePercent < 0
+                      ? "text-red-600"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {index.changePercent > 0 ? "+" : ""}
+                  {index.changePercent.toFixed(2)}%
+                </span>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 };
 
 const MarketOverviewSection = () => {
