@@ -26,7 +26,7 @@ const TradingInterface = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header Navigation */}
-        <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
+        <div className="bg-gradient-to-bl from-gray-200/70 via-pink-50 to-red-300/90 text-gray-700">
           <div className="flex">
             {/* Navigation Tabs */}
             <div className="flex">
@@ -35,7 +35,7 @@ const TradingInterface = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-6 py-3 border-r border-slate-700 hover:bg-gray-700 transition-colors ${
-                    activeTab === tab ? "bg-gray-600" : ""
+                    activeTab === tab ? "bg-gray-600 text-white" : ""
                   }`}
                 >
                   {tab}
@@ -132,14 +132,14 @@ const TradingInterface = () => {
         {/* Order Section */}
         <div className="bg-white mt-1">
           {/* Order Tabs */}
-          <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
+          <div className="bg-gradient-to-bl from-gray-200/70 via-pink-50 to-red-300/90 text-gray-700">
             <div className="flex">
               {["Order List", "Order Basket", "Account Summary"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveOrderTab(tab)} // Update active tab on click
                   className={`px-6 py-3 border-r border-slate-700 hover:bg-gray-700 transition-colors ${
-                    activeOrderTab === tab ? "bg-gray-600" : ""
+                    activeOrderTab === tab ? "bg-gray-600 text-white" : ""
                   }`}
                 >
                   {tab}
