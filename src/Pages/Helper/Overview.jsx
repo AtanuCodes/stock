@@ -29,7 +29,7 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-2 border-b border-red-200">
+    <div className="bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-3 border-b border-red-200 dark:border-gray-700">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
@@ -89,7 +89,8 @@ const IndexOverview = () => {
   return (
     <div className="text-foreground border border-gray-200 dark:border-none overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground
+       border-b border-red-200 dark:border-gray-600 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Index Overview - DSE</h3>
           <div className="flex items-center space-x-2 text-slate-800 font-semibold dark:text-foreground">
@@ -158,7 +159,7 @@ const TopGainers = () => {
     <div className="overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800
-        text-foreground border-b border-emerald-200 px-4 py-2">
+        text-foreground border-b border-emerald-200 dark:border-gray-600 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Top Gainers</h3>
           <TrendingUp className="w-4 h-4 text-emerald-600" />
@@ -206,7 +207,7 @@ const TopLosers = () => {
  return (
   <div className="bg-rose-50 dark:bg-[#212931] text-foreground  overflow-hidden">
     {/* Header */}
-    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800  text-foreground border-b border-red-200 px-4 py-2">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800  text-foreground border-b border-red-200 dark:border-gray-600 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Top Losers</h3>
         <TrendingDown className="w-4 h-4 text-red-500" />
@@ -257,7 +258,8 @@ const MostActive = () => {
 
  return (
   <div className="bg-blue-50 dark:bg-[#212931] ">
-    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800  text-foreground border-b border-blue-200 px-4 py-2">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground 
+    border-b border-blue-200 dark:border-gray-600 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Most Active</h3>
         <Activity className="w-4 h-4 text-blue-500" />
@@ -329,7 +331,8 @@ const XCHGIndexOverview = () => {
 
   return (
   <div className="bg-card text-foreground  mx-2">
-    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-purple-200 px-4 py-2">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800
+     text-foreground border-b border-purple-200 dark:border-gray-600 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Index Overview - XCHG</h3>
         <div className="flex items-center space-x-2 text-slate-800 font-semibold dark:text-foreground">
