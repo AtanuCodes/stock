@@ -189,7 +189,7 @@ const DealerNav = () => {
       </div>
 
       {/* Bottom Border */}
-      <div className="h-1 bg-gradient-to-r from-[#ED1C24]/85 via-red-600 to-[#ED1C24]"></div>
+      {/* <div className="h-1 bg-gradient-to-r from-[#ED1C24]/85 via-red-600 to-[#ED1C24]"></div> */}
     </div>
   );
 };
