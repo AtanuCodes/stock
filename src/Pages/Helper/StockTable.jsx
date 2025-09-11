@@ -432,14 +432,14 @@ const MainStockTable = () => {
       {/* Header Section */}
       <div className="border-b border-gray-200 dark:border-none">
         {/* Main Tabs */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 border-b border-gray-300 text-foreground 
+        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-tl from-[#332626] to-[#ED1C24] border-b border-gray-300 text-white dark:text-white/85
          dark:from-gray-800 dark:to-gray-500">
           <div className="flex items-center">
             {tabs.map((tab, index) => (
               <button
                 key={tab}
                 className={`px-3 py-1 text-xs font-medium rounded transition-all ${
-                  index === 1 ? "bg-slate-500/80 dark:bg-gray-100 text-card shadow" : ""
+                  index === 1 ? "bg-slate-800/80 dark:bg-gray-100 text-card shadow" : ""
                 }`}
               >
                 {tab}
@@ -449,9 +449,9 @@ const MainStockTable = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <Settings className="w-4 h-4 text-foreground cursor-pointer" />
-            <MoreHorizontal className="w-4 h-4 text-foreground cursor-pointer" />
-            <X className="w-4 h-4 text-foreground cursor-pointer" />
+            <Settings className="w-4 h-4 text-white cursor-pointer" />
+            <MoreHorizontal className="w-4 h-4 text-white  cursor-pointer" />
+            <X className="w-4 h-4 text-white  cursor-pointer" />
           </div>
         </div>
 
@@ -470,7 +470,7 @@ const MainStockTable = () => {
                 className={`px-2 py-1 text-xs rounded transition-all bg-card border border-gray-300 dark:border-none ${
                   activeTab === subTab
 
-                    ?"bg-slate-500/80 dark:bg-gray-100 text-card"
+                    ?"bg-slate-800/90 dark:bg-gray-100 text-card"
                     : "text-foreground hover:text-gray-800 hover:bg-gray-100 "
                 }`}
               >

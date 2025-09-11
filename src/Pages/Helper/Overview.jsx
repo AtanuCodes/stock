@@ -29,15 +29,15 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-3 border-b border-red-200 dark:border-gray-700">
+    <div className="bg-gradient-to-tl from-[#332626] to-[#ED1C24] dark:from-gray-500 dark:to-gray-800  px-4 py-3 border-b border-red-200 dark:border-gray-700">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-3 py-1.5 text-sm transition-all duration-200 rounded ${
+            className={`px-3 py-1.5 text-sm text-white dark:text-black transition-all duration-200 rounded ${
               activeTab === tab
-                ? "bg-slate-500/80 dark:bg-gray-100 text-white dark:text-black "
+                ? "bg-slate-800/80 dark:bg-gray-100 dark:text-black "
                 : "text-foreground dark:text-gray-300 hover:text-black hover:bg-white/50"
             }`}
           >

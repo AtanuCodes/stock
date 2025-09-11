@@ -12,8 +12,16 @@ const AuthorizedRouteList = [
     component: lazy(() => import("../pages/authorized-pages/mobileLogin.jsx")),
   },
   {
+    path: "/dealerlogin",
+    component: lazy(() => import("../pages/authorized-pages/DealerLogin.jsx")),
+  },
+  {
     path: "/dashboard",
     component: lazy(() => import("../pages/authorized-pages/page-mobile.jsx")),
+  },
+  {
+    path: "/terminal",
+    component: lazy(() => import("../pages/authorized-pages/home/page-dealer.jsx")),
   },
 ];
 

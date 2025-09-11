@@ -104,14 +104,14 @@ export default function News() {
     return (
       <div className="bg-card border border-gray-200 rounded flex flex-col h-full">
         {/* News Header */}
-        <div className="bg-gradient-to-tr from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-3 py-1.5 rounded">
+        <div className="bg-gradient-to-bl from-[#332626] to-[#ED1C24] dark:from-gray-500 dark:to-gray-800 text-foreground px-3 py-1.5 rounded">
  <div className="flex items-center justify-between">
            <span className='lg:hidden'>
              <p className='text-foreground'>News & Announcements</p>
            </span>
            <div className='hidden lg:block'>
  <div className="flex items-center space-x-2">
-              <div className="border px-2 py-1 rounded border-gray-300 text-forground">
+              <div className="border px-2 py-1 rounded border-gray-300 text-card">
                 <MicVocal className="w-4 h-4" />
               </div>
               {/* <span className="text-sm font-semibold">News Flash</span> */}
@@ -129,8 +129,8 @@ export default function News() {
                 onClick={() => setActiveNewsTab(tab)}
                 className={`dark:bg-card px-3 py-1 text-xs rounded transition-all ${
                   activeNewsTab === tab
-                    ? 'bg-slate-500/80 dark:bg-gray-100 text-card font-medium'
-                    : 'text-foreground dark:text-gray-400  hover:text-white hover:bg-white/10'
+                    ? 'bg-slate-800/80 dark:bg-gray-100 text-card font-medium'
+                    : 'text-white/70 dark:text-gray-400  hover:text-white hover:bg-white/10'
                 }`}
               >
                 {tab}
