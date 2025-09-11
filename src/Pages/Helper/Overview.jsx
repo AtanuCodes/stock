@@ -29,7 +29,7 @@ const NavigationTabs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-gray-200/85 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-2 border-b border-red-200">
+    <div className="bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-4 py-2 border-b border-red-200">
       <div className="flex items-center space-x-6">
         {tabs.map((tab) => (
           <button
@@ -87,12 +87,12 @@ const IndexOverview = () => {
   ];
 
   return (
-    <div className="text-foreground border border-gray-300 overflow-hidden">
+    <div className="text-foreground border border-gray-200 dark:border-none overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
+      <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Index Overview - DSE</h3>
-          <div className="flex items-center space-x-2 text-red-600 font-semibold dark:text-foreground">
+          <div className="flex items-center space-x-2 text-slate-800 font-semibold dark:text-foreground">
             <span className="text-xs">Volume</span>
             <ChevronDown className="w-3 h-3" />
           </div>
@@ -104,21 +104,21 @@ const IndexOverview = () => {
         {indexData.map((index, idx) => (
           <div
             key={idx}
-            className={`px-4 py-3 hover:bg-gray-100 transition-colors ${
+            className={`px-4 py-3 hover:bg-gray-100  transition-colors ${
               idx % 2 === 1
-                ? "bg-gray-100 dark:bg-gray-700"
-                : "bg-gray-50 dark:bg-gray-800"
+                ? "bg-gray-100 dark:bg-gray-700 "
+                : "bg-gray-50 dark:bg-gray-700"
             }`}
           >
             <div className="flex items-center justify-between">
               <div className="flex">
-                <div className="text-xs font-semibold">{index.name}</div>
+                <div className="text-xs font-semibold dark:font-normal">{index.name}</div>
                 <div className="text-xs text-gray-500 dark:text-gray-200 ml-1">
                   {index.fullName}
                 </div>
               </div>
               <div className="flex gap-2 text-right">
-                <div className="text-xs font-bold">{index.value}</div>
+                <div className="text-xs font-bold dark:font-normal">{index.value}</div>
                 <div className="flex items-center space-x-1">
                   {index.color === "green" ? (
                     <ArrowUp className="w-3 h-3 text-emerald-500" />
@@ -155,9 +155,10 @@ const TopGainers = () => {
   ];
 
  return (
-    <div className="bg-green-50 dark:bg-[#212931] border-b border-gray-300 overflow-hidden">
+    <div className="overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-green-700 dark:to-gray-800 text-foreground border-b border-emerald-200 px-4 py-2">
+      <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800
+        text-foreground border-b border-emerald-200 px-4 py-2">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Top Gainers</h3>
           <TrendingUp className="w-4 h-4 text-emerald-600" />
@@ -171,14 +172,14 @@ const TopGainers = () => {
             key={idx}
             className={`px-4 py-3 transition-colors ${
               idx % 2 === 0
-                ? "bg-green-50 dark:bg-green-900/30 hover:bg-green-100/60"
-                : "bg-green-100/75 dark:bg-green-800/40 hover:bg-green-200/50"
+                ? "bg-green-50 dark:bg-gray-800 hover:dark:bg-gray-600"
+                : "bg-green-100/75 dark:bg-gray-800 hover:dark:bg-gray-600"
             }`}
           >
             <div className="flex items-center justify-between">
-              <div className="text-xs font-semibold">{stock.symbol}</div>
+              <div className="text-xs font-semibold dark:font-normal">{stock.symbol}</div>
               <div className="flex text-right gap-1">
-                <div className="text-xs font-bold">{stock.price}</div>
+                <div className="text-xs font-bold dark:font-normal">{stock.price}</div>
                 <div className="flex items-center space-x-1">
                   <ArrowUp className="w-3 h-3 text-emerald-500" />
                   <span className="text-xs font-medium text-emerald-600">
@@ -203,9 +204,9 @@ const TopLosers = () => {
   ];
 
  return (
-  <div className="bg-rose-50 dark:bg-[#212931] text-foreground border-b border-gray-300 overflow-hidden">
+  <div className="bg-rose-50 dark:bg-[#212931] text-foreground  overflow-hidden">
     {/* Header */}
-    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-red-700 dark:to-gray-800 text-foreground border-b border-red-200 px-4 py-2">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800  text-foreground border-b border-red-200 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Top Losers</h3>
         <TrendingDown className="w-4 h-4 text-red-500" />
@@ -219,16 +220,16 @@ const TopLosers = () => {
           key={idx}
           className={`px-4 py-3 transition-colors ${
             idx % 2 === 0
-              ? "bg-rose-50 dark:bg-red-900/30 hover:bg-rose-100/60"
-              : "bg-rose-100/80 dark:bg-red-800/40 hover:bg-rose-200/50"
+              ? "bg-rose-50 dark:bg-gray-700 hover:bg-rose-100/60 hover:dark:bg-gray-800"
+              : "bg-rose-100/80 dark:bg-gray-700 hover:bg-rose-200/50 hover:dark:bg-gray-800"
           }`}
         >
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-xs font-semibold">{stock.symbol}</div>
+              <div className="text-xs font-semibold dark:font-normal">{stock.symbol}</div>
             </div>
             <div className="flex gap-1 text-right">
-              <div className="text-xs font-bold">{stock.price}</div>
+              <div className="text-xs font-bold dark:font-normal">{stock.price}</div>
               <div className="flex items-center space-x-1">
                 <ArrowDown className="w-3 h-3 text-red-500" />
                 <span className="text-xs font-medium text-red-600">
@@ -255,31 +256,31 @@ const MostActive = () => {
   ];
 
  return (
-  <div className="bg-blue-50 dark:bg-[#212931] border-b border-gray-300">
-    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-blue-200 px-4 py-2">
+  <div className="bg-blue-50 dark:bg-[#212931] ">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800  text-foreground border-b border-blue-200 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Most Active</h3>
         <Activity className="w-4 h-4 text-blue-500" />
       </div>
     </div>
 
-    <div className="divide-y divide-gray-100">
+    <div className="">
       {activeStocks.map((stock, idx) => (
         <div
           key={idx}
           className={`px-4 py-3 transition-colors ${
             idx % 2 === 0
-              ? "bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100/60"
-              : "bg-blue-100/60 dark:bg-blue-800/40 hover:bg-blue-200/50"
+              ? "bg-blue-50 dark:bg-gray-800 hover:dark:bg-gray-800"
+              : "bg-blue-100/60 dark:bg-gray-800 hover:bg-blue-200/50"
           }`}
         >
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-xs font-semibold">{stock.symbol}</div>
+              <div className="text-xs font-semibold dark:font-normal">{stock.symbol}</div>
             </div>
             <div className="flex gap-1 text-right">
-              <div className="text-xs font-bold">{stock.price}</div>
-              <div className="text-xs text-blue-600 font-medium">{stock.volume}</div>
+              <div className="text-xs font-bold dark:font-normal">{stock.price}</div>
+              <div className="text-xs text-blue-600 dark:text-blue-400 font-medium ">{stock.volume}</div>
             </div>
           </div>
         </div>
@@ -327,11 +328,11 @@ const XCHGIndexOverview = () => {
   ];
 
   return (
-  <div className="bg-card text-foreground border-b border-gray-300 mx-2">
-    <div className="bg-gradient-to-r from-gray-300/80 via-stone-200/75 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-purple-200 px-4 py-2">
+  <div className="bg-card text-foreground  mx-2">
+    <div className="bg-gradient-to-l from-gray-300/85 to-white dark:from-gray-600 dark:to-gray-800 text-foreground border-b border-purple-200 px-4 py-2">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">Index Overview - XCHG</h3>
-        <div className="flex items-center space-x-2 text-red-600 font-semibold dark:text-foreground">
+        <div className="flex items-center space-x-2 text-slate-800 font-semibold dark:text-foreground">
           <span className="text-xs">Volume</span>
           <ChevronDown className="w-3 h-3" />
         </div>
@@ -344,7 +345,7 @@ const XCHGIndexOverview = () => {
           key={idx}
           className={`px-4 py-3 hover:bg-gray-100 transition-colors ${
             idx % 2 === 0
-              ? "bg-gray-0 dark:bg-gray-800"
+              ? "bg-gray-0 dark:bg-gray-700"
               : "bg-gray-100 dark:bg-gray-700"
           }`}
         >
@@ -386,7 +387,7 @@ const XCHGIndexOverview = () => {
 
 const MarketOverviewSection = () => {
   return (
-    <div className="bg-gray-100 mx-2 border-gray-300 ">
+    <div className="bg-gray-100 dark:bg-gray-900 mx-2 border-gray-300 ">
       <NavigationTabs />
 
       <div className="grid grid-cols-5 h-full w-full mb-1">

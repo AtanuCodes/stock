@@ -428,11 +428,11 @@ const MainStockTable = () => {
   };
 
   return (
-    <div className="bg-card mx-2 border border-gray-300">
+    <div className="bg-card mx-2 border border-gray-300 ">
       {/* Header Section */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-gray-200 dark:border-none">
         {/* Main Tabs */}
-        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-gray-200/85 via-rose-50 to-red-200 border-b border-gray-300 text-foreground 
+        <div className="flex items-center justify-between px-2 py-1 bg-gradient-to-r from-gray-300/70 via-rose-50 to-red-200 border-b border-gray-300 text-foreground 
          dark:from-gray-800 dark:to-gray-500">
           <div className="flex items-center">
             {tabs.map((tab, index) => (
@@ -577,7 +577,7 @@ const MainStockTable = () => {
             {stockData.map((stock, index) => (
               <tr
                 key={stock.symbol}
-                className={`border-b border-gray-100 hover:bg-blue-50 dark:hover:bg-slate-500 ${
+                className={`border-b border-gray-100 dark:border-gray-600 hover:bg-blue-50 dark:hover:bg-slate-600 ${
                   index % 2 === 1 ? "bg-gray-100 dark:bg-gray-700" : "bg-card"
                 }`}
               >

@@ -104,7 +104,7 @@ export default function News() {
     return (
       <div className="bg-card border border-gray-200 rounded flex flex-col h-full">
         {/* News Header */}
-        <div className="bg-gradient-to-tr from-gray-200/85 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-3 py-1.5 rounded">
+        <div className="bg-gradient-to-tr from-gray-300/70 via-rose-50 to-red-200 dark:from-gray-500 dark:to-gray-800 text-foreground px-3 py-1.5 rounded">
  <div className="flex items-center justify-between">
            <span className='lg:hidden'>
              <p className='text-foreground'>News & Announcements</p>
@@ -130,7 +130,7 @@ export default function News() {
                 className={`dark:bg-card px-3 py-1 text-xs rounded transition-all ${
                   activeNewsTab === tab
                     ? 'bg-slate-500/80 dark:bg-gray-100 text-card font-medium'
-                    : 'text-foreground dark:text-gray-500  hover:text-white hover:bg-white/10'
+                    : 'text-foreground dark:text-gray-400  hover:text-white hover:bg-white/10'
                 }`}
               >
                 {tab}
@@ -144,7 +144,7 @@ export default function News() {
 
         {/* News Content */}
         <div className="flex-1 overflow-y-auto">
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-100 dark:divide-gray-700">
             {newsItems.map((news, idx) => (
               <div key={idx} className="px-3 py-2 hover:bg-red-50 dark:hover:bg-gray-700 transition-colors cursor-pointer border-l-4 border-l-orange-400">
                 <div className="flex items-start space-x-2">
@@ -156,10 +156,10 @@ export default function News() {
                       {news.title}
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-blue-500 font-medium cursor-pointer hover:underline">
+                      <span className="text-xs text-blue-500 dark:text-blue-400 font-medium cursor-pointer hover:underline">
                         {news.category}
                       </span>
-                      <span className="text-xs text-blue-500">
+                      <span className="text-xs text-blue-500 dark:text-blue-400">
                         {news.time}
                       </span>
                     </div>
