@@ -140,7 +140,7 @@ const IDLCLogin = () => {
               type="button"
               onClick={handleLogin}
               disabled={isLoading || !username || !password}
-              className="w-full bg-gradient-to-r from-red-500 to-red-700/90 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+              className="w-full bg-gradient-to-r from-red-500 to-red-600/90 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
             >
               {isLoading ? (
                 <div className="flex items-center">

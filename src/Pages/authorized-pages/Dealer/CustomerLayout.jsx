@@ -11,15 +11,14 @@ import {
 
 const TradingInterface = () => {
   const [activeTab, setActiveTab] = useState("Customer Search");
-  const [activeOrderTab, setActiveOrderTab] = useState("Open/Today's");
+  const [activeOrderTab, setActiveOrderTab] = useState("Order List"); // Default to "Order List"
 
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Left Vertical Watchlist */}
       <div className="w-12 bg-slate-700 flex flex-col items-center justify-between py-6 text-white">
         <div className="flex items-center rotate-180 [writing-mode:vertical-rl] tracking-widest font-semibold text-sm mr-2">
-          <Eye className="w-6 h-6 text-white rotate-90" />{" "}
-          {/* Added margin-right for spacing */}
+          <Eye className="w-6 h-6 text-white rotate-90" />
           WATCHLIST
         </div>
       </div>
@@ -27,8 +26,8 @@ const TradingInterface = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header Navigation */}
-        <div className="bg-gradient-to-br from-red-600 to-slate-800 text-white">
-          <div className="flex items-center">
+        <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
+          <div className="flex">
             {/* Navigation Tabs */}
             <div className="flex">
               {["Customer Search", "My Customer"].map((tab) => (
@@ -74,7 +73,7 @@ const TradingInterface = () => {
 
           {/* Customer Data Grid */}
           <div className="overflow-x-auto">
-            <table className="w-full border">
+            <table className="w-full">
               <thead className="bg-gray-100">
                 <tr>
                   {[
@@ -110,7 +109,8 @@ const TradingInterface = () => {
           </div>
 
           {/* Pagination */}
-          <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-t">
+          <div className="flex items-center justify-between px-4 py-2 bg-gray-50
+           ">
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-600">Page Size</span>
               <select className="border border-gray-300 rounded px-2 py-1 text-sm">
@@ -132,12 +132,15 @@ const TradingInterface = () => {
         {/* Order Section */}
         <div className="bg-white mt-1">
           {/* Order Tabs */}
-          <div className="bg-gradient-to-br from-red-600 to-slate-800 text-white">
+          <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
             <div className="flex">
               {["Order List", "Order Basket", "Account Summary"].map((tab) => (
                 <button
                   key={tab}
-                  className="px-6 py-3 border-r border-slate-700 hover:bg-gray-700 transition-colors bg-gray-600"
+                  onClick={() => setActiveOrderTab(tab)} // Update active tab on click
+                  className={`px-6 py-3 border-r border-slate-700 hover:bg-gray-700 transition-colors ${
+                    activeOrderTab === tab ? "bg-gray-600" : ""
+                  }`}
                 >
                   {tab}
                 </button>
@@ -196,7 +199,7 @@ const TradingInterface = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <button className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">
+                <button className="bg-red-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-600">
                   Panic Switch
                 </button>
                 <RefreshCw className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-800" />
@@ -247,7 +250,7 @@ const TradingInterface = () => {
 
           {/* Order Data Grid */}
           <div className="overflow-x-auto">
-            <table className="w-full border">
+            <table className="w-full border-b border-gray-300">
               <thead className="bg-gray-100">
                 <tr>
                   {[

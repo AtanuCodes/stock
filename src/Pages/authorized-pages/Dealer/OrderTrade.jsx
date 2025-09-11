@@ -23,7 +23,7 @@ const NewOrderInterface = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
-      <div className="bg-gradient-to-br from-red-600 to-slate-800 text-white">
+      <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
         <div className="flex items-center justify-between px-4 py-2.5">
           <h1 className="text-lg font-semibold">New Order</h1>
           <div className="flex items-center space-x-2">
@@ -327,7 +327,7 @@ const NewOrderInterface = () => {
             </div>
           </div>
       {/* Portfolio Section */}
-      <div className="bg-gradient-to-br from-red-600 to-slate-800 text-white">
+      <div className="bg-gradient-to-br from-red-700 to-slate-800 text-white">
         <div className="flex items-center justify-between px-4 py-2">
           <h2 className="text-lg font-semibold">Portfolio</h2>
           <div className="flex items-center space-x-2">
