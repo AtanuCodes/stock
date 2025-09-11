@@ -145,7 +145,6 @@ const IndexOverview = () => {
   );
 };
 
-
 // Top Gainers Component
 const TopGainers = () => {
   const gainers = [

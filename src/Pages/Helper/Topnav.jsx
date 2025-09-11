@@ -8,8 +8,8 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import df from "../../assets/DFLOGO.svg";
-import Wlogo from "../../assets/white.svg";
+import df from "../../assets/Logo.png";
+import Wlogo from "../../assets/White1.png";
 export default function Topnav() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
