@@ -5,18 +5,20 @@ import MainStockTable from "../../Helper/StockTable";
 import News from "../../Helper/News";
 import { Zap } from "lucide-react";
 import DealerNav from "../Dealer/DealerHeader";
+import TradingInterface from "../Dealer/CustomerLayout";
+import NewOrderInterface from "../Dealer/OrderTrade";
 
 const DealerTerminal = () => {
   return (
     <div className="">
       <DealerNav/>
 
-      <div className="grid grid-cols-[9fr,2fr] gap-0] gap-0">
+      <div className="grid grid-cols-2">
         <div className="">
-         
+         <TradingInterface/>
         </div>
-        <div className="w-100%">
-         
+        <div className="">
+         <NewOrderInterface/>
         </div>
       </div>
      

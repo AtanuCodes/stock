@@ -58,9 +58,9 @@ const DealerNav = () => {
   ];
 
   const statusItems = [
-    { label: "Gainers", value: "0", color: "text-green-400" },
-    { label: "Unchanged", value: "0", color: "text-gray-400" },
-    { label: "Losers", value: "0", color: "text-red-400" },
+    { label: "Volume", value: "0", color: "text-green-400" },
+    { label: "Turnover", value: "0", color: "text-gray-400" },
+    { label: "Trades", value: "0", color: "text-red-400" },
     { label: "YTD %", value: "0.00", color: "text-blue-400" },
     { label: "Symbols Traded", value: "0 0 0", color: "text-cyan-400" },
     { label: "Net Cash %", value: "0.00%", color: "text-yellow-400" },
@@ -96,7 +96,7 @@ const DealerNav = () => {
             <div className="text-slate-300">Version 4.061.00.0</div>
             <div className="text-slate-300">Dealer 1</div>
             <div className="flex items-center space-x-1">
-              <div className="w-4 h-4 bg-red-600 rounded-sm"></div>
+              {/* <div className="w-4 h-4 bg-red-600 rounded-sm"></div> */}
               <span className="font-semibold">IDLC Securities Limited</span>
             </div>
             <div className="text-slate-300">License Till: 11-Sep-2025</div>
@@ -111,7 +111,7 @@ const DealerNav = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center px-2 py-3 bg-slate-800">
+      <div className="flex justify-between items-center px-2 bg-slate-800">
         <div className="flex items-center space-x-4">
           <button className="flex items-center space-x-1 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg transition-colors">
             <span className="font-semibold text-white">DSE</span>
@@ -131,7 +131,7 @@ const DealerNav = () => {
 
           {/* Logo */}
           <div className="flex items-center ">
-            <img src={logo1} alt="Logo" className="w-20 h-14" />
+            <img src={logo1} alt="Logo" className="w-22 h-14" />
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@ const DealerNav = () => {
       </div>
 
       {/* Bottom Border */}
-      <div className="h-1 bg-gradient-to-r from-[#ED1C24] via-red-500 to-[#ED1C24]"></div>
+      <div className="h-1 bg-gradient-to-r from-[#ED1C24]/85 via-red-600 to-[#ED1C24]"></div>
     </div>
   );
 };
